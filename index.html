@@ -25,6 +25,7 @@
 
         h1, h2, h3 {
             font-weight: 600;
+            text-align: center; /* Centrarea textului */
         }
 
         a {
@@ -132,66 +133,14 @@
             transform-origin: bottom left;
         }
 
-        /* Skills Section */
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 40px;
-            padding: 60px 20px;
-            margin-top: 50px;
-            text-align: center;
-            animation: fadeIn 1s ease-out;
-            justify-items: center;
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .skills div {
-            background-color: #222;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-in-out;
-            width: 100%;
-            max-width: 350px;
-        }
-
-        .skills div:hover {
-            transform: scale(1.05);
-        }
-
-        .skills h3 {
-            font-size: 1.5rem;
-            color: #ff4081;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .progress-bar {
-            width: 100%;
-            background-color: #444;
-            border-radius: 10px;
-            height: 8px;
-            margin-top: 15px;
-        }
-
-        .progress-bar span {
-            display: block;
-            height: 100%;
-            border-radius: 10px;
-            transition: width 0.6s ease;
-        }
-
         /* Projects Section */
         .projects {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
             margin-top: 50px;
+            padding: 60px 20px;
             text-align: center;
             max-width: 1200px;
             width: 100%;
+            animation: fadeIn 1s ease-out;
         }
 
         .projects div {
@@ -199,6 +148,7 @@
             text-align: center;
             transition: 0.3s ease;
             position: relative;
+            margin-bottom: 30px;
         }
 
         .projects img {
@@ -278,8 +228,8 @@
 
         /* Responsive Design */
         @media screen and (max-width: 768px) {
-            .skills {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            .projects {
+                flex-direction: column;
             }
         }
     </style>
@@ -294,37 +244,10 @@
 
 <nav>
     <ul>
-        <li><a href="#skills">Abilități</a></li>
         <li><a href="#projects">Proiecte</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
-
-<section id="skills">
-    <h2>Abilități</h2>
-    <div class="skills">
-        <div>
-            <h3>PHP</h3>
-            <div class="progress-bar"><span style="width: 90%; background-color: #ff4081;"></span></div>
-        </div>
-        <div>
-            <h3>HTML & CSS</h3>
-            <div class="progress-bar"><span style="width: 95%; background-color: #ff4081;"></span></div>
-        </div>
-        <div>
-            <h3>C++</h3>
-            <div class="progress-bar"><span style="width: 80%; background-color: #ff4081;"></span></div>
-        </div>
-        <div>
-            <h3>JavaScript</h3>
-            <div class="progress-bar"><span style="width: 85%; background-color: #ff4081;"></span></div>
-        </div>
-        <div>
-            <h3>Python</h3>
-            <div class="progress-bar"><span style="width: 80%; background-color: #ff4081;"></span></div>
-        </div>
-    </div>
-</section>
 
 <section id="projects">
     <h2>Proiecte</h2>
