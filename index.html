@@ -488,21 +488,7 @@
             });
         });
 
-        // Animație de intrare pentru elemente
-        const animateOnScroll = function() {
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const sectionVisible = sectionTop < window.innerHeight * 0.75;
-                
-                if (sectionVisible) {
-                    section.style.animation = `fadeIn 0.5s ease-out forwards`;
-                }
-            });
-        };
 
-        // Inițializare
-        window.addEventListener('load', animateOnScroll);
-        window.addEventListener('scroll', animateOnScroll);
     });
 </script>
 
