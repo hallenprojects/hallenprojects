@@ -116,6 +116,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 30px;
+            margin-top: 50px;
         }
 
         .skills div {
@@ -132,18 +133,39 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
+        .skills h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #444;
+            border-radius: 10px;
+            height: 8px;
+            margin-top: 10px;
+        }
+
+        .progress-bar span {
+            display: block;
+            height: 100%;
+            border-radius: 10px;
+        }
+
         /* Projects Section */
         .projects {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 30px;
+            margin-top: 50px;
         }
 
         .projects div {
             width: 280px;
             text-align: center;
             transition: 0.3s ease;
+            position: relative;
         }
 
         .projects img {
@@ -163,7 +185,20 @@
             margin-top: 15px;
         }
 
+        .projects p {
+            font-size: 1rem;
+            color: #bbb;
+        }
+
         /* Contact Section */
+        .contact-info {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            text-align: center;
+        }
+
         .contact-info a {
             color: #fff;
             font-size: 1.4rem;
@@ -173,6 +208,37 @@
 
         .contact-info a:hover {
             color: #ff4081;
+        }
+
+        .contact-form {
+            margin-top: 20px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #333;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            padding: 15px 40px;
+            background-color: #ff4081;
+            border-radius: 30px;
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: transparent;
+            color: #ff4081;
+            border: 2px solid #ff4081;
         }
 
         /* Footer */
@@ -233,23 +299,23 @@
     <div class="skills">
         <div>
             <h3>PHP</h3>
-            <p>Dezvolt aplicații web dinamice și performante.</p>
+            <div class="progress-bar"><span style="width: 90%; background-color: #ff4081;"></span></div>
         </div>
         <div>
             <h3>HTML & CSS</h3>
-            <p>Crearea de site-uri web responsive și atractive.</p>
+            <div class="progress-bar"><span style="width: 95%; background-color: #ff4081;"></span></div>
         </div>
         <div>
             <h3>C++</h3>
-            <p>Software performant și optimizat pentru orice platformă.</p>
+            <div class="progress-bar"><span style="width: 80%; background-color: #ff4081;"></span></div>
         </div>
         <div>
             <h3>JavaScript</h3>
-            <p>Crearea de aplicații interactive și dinamice.</p>
+            <div class="progress-bar"><span style="width: 85%; background-color: #ff4081;"></span></div>
         </div>
         <div>
             <h3>Python</h3>
-            <p>Automatizare, analiza datelor și machine learning.</p>
+            <div class="progress-bar"><span style="width: 80%; background-color: #ff4081;"></span></div>
         </div>
     </div>
 </section>
@@ -282,6 +348,16 @@
         <a href="mailto:email@example.com">Email</a>
         <a href="https://www.linkedin.com/in/username" target="_blank">LinkedIn</a>
         <a href="https://github.com/username" target="_blank">GitHub</a>
+    </div>
+
+    <div class="contact-form">
+        <h3>Trimite-mi un mesaj</h3>
+        <form action="#" method="post">
+            <input type="text" placeholder="Numele tău" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Mesaj" rows="5" required></textarea>
+            <button type="submit">Trimite</button>
+        </form>
     </div>
 </section>
 
