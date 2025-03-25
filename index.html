@@ -137,6 +137,7 @@
             margin-top: 50px;
             text-align: center;
             animation: fadeIn 1s ease-out;
+            justify-items: center; /* Align items in the middle */
         }
 
         .skills div {
@@ -145,6 +146,8 @@
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease-in-out;
+            width: 100%; /* Ensure divs are aligned */
+            max-width: 350px; /* Set a max-width for each skill box */
         }
 
         .skills div:hover {
@@ -180,6 +183,7 @@
             flex-wrap: wrap;
             gap: 30px;
             margin-top: 50px;
+            text-align: center;
         }
 
         .projects div {
