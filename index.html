@@ -134,7 +134,7 @@
             color: #bbb;
         }
 
-        /* Butoane */
+        /* Butoane - am eliminat complet efectul de subliniere */
         .cta-button {
             padding: 15px 40px;
             font-size: 1.2rem;
@@ -149,11 +149,7 @@
             display: inline-block;
             cursor: pointer;
             margin: 10px;
-        }
-
-        /* Eliminăm sublinierea pentru butoanele din header */
-        #home .cta-button::after {
-            display: none;
+            text-decoration: none; /* Asigură că nu apare sublinierea */
         }
 
         .cta-button:hover {
@@ -161,9 +157,10 @@
             color: #ff4081;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+            text-decoration: none; /* Elimină orice subliniere la hover */
         }
 
-        /* Navigație */
+        /* Navigație - fără efect de subliniere */
         nav {
             position: fixed;
             top: 0;
@@ -202,30 +199,14 @@
             letter-spacing: 1px;
             transition: all 0.3s ease;
             position: relative;
+            text-decoration: none; /* Elimină sublinierea */
         }
 
-        nav ul li a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 3px;
-            background-color: #ff4081;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-out;
-        }
-
+        /* Am eliminat complet pseudo-elementul ::after care crea sublinierea */
         nav ul li a:hover,
         nav ul li a.active {
             color: #ff4081;
-        }
-
-        nav ul li a:hover::after,
-        nav ul li a.active::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+            text-decoration: none; /* Asigură că nu apare subliniere la hover */
         }
 
         /* Footer */
