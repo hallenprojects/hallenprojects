@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site de prezentare pentru un developer PHP, HTML, C++, JavaScript și Python.">
+    <title>Developer Web & Software</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #222;
+            padding: 15px 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #444;
+        }
+
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .skills, .projects {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .skills div, .projects div {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .projects img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-info a:hover {
+            color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Bun venit pe site-ul meu!</h1>
+    <p>Eu sunt un developer cu experiență în PHP, HTML, C++, JavaScript și Python</p>
+</header>
+
+<nav>
+    <a href="#skills">Abilități</a>
+    <a href="#projects">Proiecte</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="skills" class="section">
+    <h2>Abilități</h2>
+    <div class="skills">
+        <div>
+            <h3>PHP</h3>
+            <p>Dezvolt aplicații web dinamice și eficiente folosind PHP.</p>
+        </div>
+        <div>
+            <h3>HTML & CSS</h3>
+            <p>Crearea de site-uri web responsabile, folosind cele mai bune practici.</p>
+        </div>
+        <div>
+            <h3>C++</h3>
+            <p>Scriere de software performant și optimizat în C++.</p>
+        </div>
+        <div>
+            <h3>JavaScript</h3>
+            <p>Realizez aplicații interactive și moderne folosind JavaScript.</p>
+        </div>
+        <div>
+            <h3>Python</h3>
+            <p>Automatizare, dezvoltare web și aplicații de data science cu Python.</p>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="section">
+    <h2>Proiecte Recente</h2>
+    <div class="projects">
+        <div>
+            <img src="project1.jpg" alt="Proiect 1">
+            <h3>Proiect 1</h3>
+            <p>Un proiect personal dezvoltat în PHP și JavaScript.</p>
+        </div>
+        <div>
+            <img src="project2.jpg" alt="Proiect 2">
+            <h3>Proiect 2</h3>
+            <p>Un software de procesare a datelor dezvoltat în Python.</p>
+        </div>
+        <div>
+            <img src="project3.jpg" alt="Proiect 3">
+            <h3>Proiect 3</h3>
+            <p>Un site web dinamic realizat cu HTML, CSS și PHP.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Dacă vrei să colaborăm sau ai întrebări, nu ezita să mă contactezi!</p>
+    <div class="contact-info">
+        <a href="mailto:email@example.com">Email</a>
+        <a href="https://www.linkedin.com/in/username" target="_blank">LinkedIn</a>
+        <a href="https://github.com/username" target="_blank">GitHub</a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Developer Web & Software | Toate drepturile rezervate</p>
+</footer>
+
+</body>
+</html>
