@@ -6,88 +6,208 @@
     <meta name="description" content="Site de prezentare pentru un developer PHP, HTML, C++, JavaScript și Python.">
     <title>Developer Web & Software</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            box-sizing: border-box;
         }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        /* Global Styles */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+
+        /* Header Section */
         header {
-            background: #333;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
             color: #fff;
+            padding: 80px 0;
             text-align: center;
-            padding: 50px 0;
         }
 
         header h1 {
-            margin: 0;
-            font-size: 3rem;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
         }
 
+        header p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        header .cta-button {
+            background-color: #fff;
+            color: #2575fc;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            border-radius: 30px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header .cta-button:hover {
+            background-color: #2575fc;
+            color: #fff;
+        }
+
+        /* Navbar */
         nav {
+            background-color: #333;
+            position: sticky;
+            top: 0;
+            padding: 15px;
+            z-index: 100;
+        }
+
+        nav ul {
             display: flex;
             justify-content: center;
-            background-color: #222;
-            padding: 15px 0;
+            list-style: none;
         }
 
-        nav a {
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
             color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 15px;
             font-size: 1.1rem;
-            transition: background-color 0.3s;
+            padding: 10px;
+            transition: color 0.3s;
         }
 
-        nav a:hover {
-            background-color: #444;
+        nav ul li a:hover {
+            color: #2575fc;
         }
 
+        /* Sections */
         .section {
-            padding: 50px 20px;
+            padding: 80px 20px;
             text-align: center;
+            background-color: #fff;
         }
 
-        .skills, .projects {
+        .section:nth-child(even) {
+            background-color: #f4f7fc;
+        }
+
+        /* Skills Section */
+        .skills {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
+            gap: 30px;
         }
 
-        .skills div, .projects div {
+        .skills div {
             background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px;
-            width: 250px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skills div:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Projects Section */
+        .projects {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .projects div {
+            width: 300px;
+            text-align: center;
+            position: relative;
         }
 
         .projects img {
             width: 100%;
-            height: auto;
-            border-radius: 8px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
         }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
+        .projects img:hover {
+            transform: scale(1.05);
         }
 
+        .projects h3 {
+            font-size: 1.3rem;
+            margin-top: 20px;
+        }
+
+        /* Contact Section */
         .contact-info a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1.2rem;
+            color: #333;
+            font-size: 1.4rem;
+            margin: 0 20px;
+            transition: color 0.3s;
         }
 
         .contact-info a:hover {
-            color: #f5f5f5;
+            color: #2575fc;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply animations */
+        header, .skills, .projects, .contact-info, footer {
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .skills, .projects {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skills div, .projects div {
+                width: 80%;
+                margin-bottom: 30px;
+            }
         }
     </style>
 </head>
@@ -95,13 +215,16 @@
 
 <header>
     <h1>Bun venit pe site-ul meu!</h1>
-    <p>Eu sunt un developer cu experiență în PHP, HTML, C++, JavaScript și Python</p>
+    <p>Developer PHP, HTML, C++, JavaScript și Python</p>
+    <a href="#contact" class="cta-button">Contactează-mă</a>
 </header>
 
 <nav>
-    <a href="#skills">Abilități</a>
-    <a href="#projects">Proiecte</a>
-    <a href="#contact">Contact</a>
+    <ul>
+        <li><a href="#skills">Abilități</a></li>
+        <li><a href="#projects">Proiecte</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
 </nav>
 
 <section id="skills" class="section">
@@ -109,51 +232,51 @@
     <div class="skills">
         <div>
             <h3>PHP</h3>
-            <p>Dezvolt aplicații web dinamice și eficiente folosind PHP.</p>
+            <p>Dezvolt aplicații web dinamice și performante.</p>
         </div>
         <div>
             <h3>HTML & CSS</h3>
-            <p>Crearea de site-uri web responsabile, folosind cele mai bune practici.</p>
+            <p>Crearea de site-uri responsive și estetic plăcute.</p>
         </div>
         <div>
             <h3>C++</h3>
-            <p>Scriere de software performant și optimizat în C++.</p>
+            <p>Software performant și optimizat pentru orice platformă.</p>
         </div>
         <div>
             <h3>JavaScript</h3>
-            <p>Realizez aplicații interactive și moderne folosind JavaScript.</p>
+            <p>Crearea de aplicații interactive și dinamice.</p>
         </div>
         <div>
             <h3>Python</h3>
-            <p>Automatizare, dezvoltare web și aplicații de data science cu Python.</p>
+            <p>Automatizare, web scraping, data science și machine learning.</p>
         </div>
     </div>
 </section>
 
 <section id="projects" class="section">
-    <h2>Proiecte Recente</h2>
+    <h2>Proiecte</h2>
     <div class="projects">
         <div>
             <img src="project1.jpg" alt="Proiect 1">
             <h3>Proiect 1</h3>
-            <p>Un proiect personal dezvoltat în PHP și JavaScript.</p>
+            <p>Aplicație web completă în PHP și JS</p>
         </div>
         <div>
             <img src="project2.jpg" alt="Proiect 2">
             <h3>Proiect 2</h3>
-            <p>Un software de procesare a datelor dezvoltat în Python.</p>
+            <p>Automatizare proces în Python pentru datele de business</p>
         </div>
         <div>
             <img src="project3.jpg" alt="Proiect 3">
             <h3>Proiect 3</h3>
-            <p>Un site web dinamic realizat cu HTML, CSS și PHP.</p>
+            <p>Web app interactiv folosind C++ și JavaScript</p>
         </div>
     </div>
 </section>
 
 <section id="contact" class="section">
     <h2>Contact</h2>
-    <p>Dacă vrei să colaborăm sau ai întrebări, nu ezita să mă contactezi!</p>
+    <p>Vrei să discutăm despre o colaborare? Mă poți contacta prin următoarele canale:</p>
     <div class="contact-info">
         <a href="mailto:email@example.com">Email</a>
         <a href="https://www.linkedin.com/in/username" target="_blank">LinkedIn</a>
