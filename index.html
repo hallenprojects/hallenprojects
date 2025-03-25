@@ -15,7 +15,6 @@
 
         body, html {
             font-family: 'Arial', sans-serif;
-            background-color: #111;
             color: #fff;
             line-height: 1.6;
             overflow-x: hidden;
@@ -35,11 +34,29 @@
             overflow: hidden;
         }
 
-        /* Animatie background home */
-        #home {
+        /* Animatie background comună pentru toate paginile */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(-45deg, #111, #1a1a2e, #16213e, #0f3460);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
+            z-index: 1;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 2;
         }
 
         @keyframes gradientBG {
@@ -48,25 +65,14 @@
             100% { background-position: 0% 50%; }
         }
 
-        #home::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 1;
-        }
-
-        /* Animatie particule pentru home */
+        /* Animatie particule pentru toate paginile */
         .particles {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 2;
+            z-index: 3;
             overflow: hidden;
         }
 
@@ -83,84 +89,10 @@
             }
         }
 
-        /* Animatie background projects */
-        #projects {
-            background: #1e1e1e;
-            position: relative;
-        }
-
-        #projects::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(45deg, #ff4081 25%, transparent 25%) -50px 0,
-                linear-gradient(-45deg, #ff4081 25%, transparent 25%) -50px 0,
-                linear-gradient(45deg, transparent 75%, #ff4081 75%),
-                linear-gradient(-45deg, transparent 75%, #ff4081 75%);
-            background-size: 100px 100px;
-            opacity: 0.05;
-            animation: movePattern 30s linear infinite;
-        }
-
-        @keyframes movePattern {
-            0% { background-position: 0 0, 0 0, 0 0, 0 0; }
-            100% { background-position: 200px 200px, 200px 200px, 200px 200px, 200px 200px; }
-        }
-
-        /* Animatie background contact - NOU DESIGN */
-        #contact {
-            background: #222;
-            position: relative;
-            overflow: hidden;
-        }
-
-        #contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(135deg, 
-                    rgba(255, 64, 129, 0.1) 0%, 
-                    rgba(255, 64, 129, 0) 50%, 
-                    rgba(255, 64, 129, 0.1) 100%);
-            animation: contactSlide 20s linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes contactSlide {
-            0% { transform: translateX(-50%) translateY(-50%); }
-            100% { transform: translateX(50%) translateY(50%); }
-        }
-
-        #contact::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300vw;
-            height: 300vw;
-            background: radial-gradient(circle, rgba(255,64,129,0.05) 0%, rgba(255,64,129,0) 70%);
-            transform: translate(-50%, -50%);
-            animation: contactPulse 15s ease infinite;
-            z-index: 1;
-        }
-
-        @keyframes contactPulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.2; }
-        }
-
         /* Stiluri conținut */
         .content {
             position: relative;
-            z-index: 3;
+            z-index: 4;
             text-align: center;
             max-width: 800px;
             padding: 20px;
@@ -180,7 +112,7 @@
             max-width: 800px;
             margin: 0 auto 30px;
             position: relative;
-            z-index: 3;
+            z-index: 4;
         }
 
         /* Container proiecte */
@@ -192,7 +124,7 @@
             margin-top: 50px;
             max-width: 1200px;
             position: relative;
-            z-index: 3;
+            z-index: 4;
         }
 
         /* Carduri proiecte */
@@ -206,7 +138,7 @@
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
             backdrop-filter: blur(5px);
             position: relative;
-            z-index: 3;
+            z-index: 4;
         }
 
         .project:hover {
@@ -250,7 +182,7 @@
             margin: 10px;
             text-decoration: none;
             position: relative;
-            z-index: 3;
+            z-index: 4;
         }
 
         .cta-button:hover {
@@ -270,7 +202,7 @@
             max-width: 1200px;
             padding: 20px;
             position: relative;
-            z-index: 3;
+            z-index: 4;
         }
 
         /* Navigație */
@@ -327,7 +259,7 @@
             padding: 40px 20px;
             text-align: center;
             position: relative;
-            z-index: 3;
+            z-index: 4;
         }
 
         footer p {
@@ -395,7 +327,7 @@
 
 <!-- Secțiunea Acasă -->
 <section id="home" class="page">
-    <div class="particles" id="particles-js"></div>
+    <div class="particles" id="particles-home"></div>
     <div class="content">
         <h1>Bun venit pe site-ul meu!</h1>
         <p>Developer PHP, HTML, C++, JavaScript și Python</p>
@@ -405,6 +337,7 @@
 
 <!-- Secțiunea Proiecte -->
 <section id="projects" class="page">
+    <div class="particles" id="particles-projects"></div>
     <div class="content">
         <h2>Proiecte</h2>
         <p>Explorează câteva dintre proiectele la care am lucrat</p>
@@ -428,8 +361,9 @@
     </div>
 </section>
 
-<!-- Secțiunea Contact - NOU DESIGN -->
+<!-- Secțiunea Contact -->
 <section id="contact" class="page">
+    <div class="particles" id="particles-contact"></div>
     <div class="content">
         <h2>Contact</h2>
         <p>Vrei să discutăm despre o colaborare?</p>
@@ -447,12 +381,12 @@
 </footer>
 
 <script>
-    // Animatie particule
-    function createParticles() {
-        const container = document.getElementById('particles-js');
-        const particleCount = 50;
+    // Funcție pentru crearea particulelor
+    function createParticles(containerId, count = 30) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
         
-        for (let i = 0; i < particleCount; i++) {
+        for (let i = 0; i < count; i++) {
             const particle = document.createElement('div');
             particle.classList.add('particle');
             
@@ -478,7 +412,10 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        createParticles();
+        // Crează particule pentru fiecare pagină
+        createParticles('particles-home', 50);
+        createParticles('particles-projects', 30);
+        createParticles('particles-contact', 30);
         
         const nav = document.getElementById('main-nav');
         const navLinks = document.querySelectorAll('nav a');
