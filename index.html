@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Website de prezentare pentru un developer PHP, HTML, C++, JavaScript și Python.">
-    <title>Developer Web & Software</title>
+    <title>HALLEN | Developer Web & Software</title>
     <style>
         /* Global styles */
         * {
@@ -13,14 +13,13 @@
             box-sizing: border-box;
         }
 
-        body {
+        body, html {
             font-family: 'Arial', sans-serif;
             background-color: #111;
             color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         h1, h2, h3 {
@@ -33,52 +32,55 @@
             color: inherit;
         }
 
-        /* Header */
-        header {
-            height: 100vh;
-            background: url('https://source.unsplash.com/random/1920x1080') no-repeat center center/cover;
+        /* Full-page sections */
+        .page {
+            min-height: 100vh;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        /* Header/Hero Section */
+        #home {
+            height: 100vh;
+            background: url('https://source.unsplash.com/random/1920x1080?coding,technology') no-repeat center center/cover;
             text-align: center;
-            padding: 20px;
             color: #fff;
             position: relative;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
-        header h1 {
+        #home .content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #home h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
-        header p {
+        #home p {
             font-size: 1.5rem;
             margin-bottom: 30px;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-        }
-
-        .cta-button {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            background-color: #ff4081;
-            border-radius: 30px;
-            color: #fff;
-            border: 2px solid #ff4081;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 1px;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            background-color: transparent;
-            color: #ff4081;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
         }
 
         /* Navigation */
@@ -89,8 +91,9 @@
             width: 100%;
             background-color: rgba(0, 0, 0, 0.7);
             padding: 15px 0;
-            z-index: 2;
+            z-index: 100;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
         }
 
         nav ul {
@@ -138,34 +141,52 @@
             transform-origin: bottom left;
         }
 
+        /* Buttons */
+        .cta-button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background-color: #ff4081;
+            border-radius: 30px;
+            color: #fff;
+            border: 2px solid #ff4081;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: #ff4081;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+        }
+
         /* Projects Section */
         #projects {
-            margin-top: 50px;
-            padding: 60px 20px;
-            text-align: center;
+            background-color: #1e1e1e;
+        }
+
+        #projects .container {
             max-width: 1200px;
             width: 100%;
+            padding: 0 20px;
         }
 
-        .projects {
-            background-color: #1e1e1e;
-            color: #fff;
-            padding: 60px 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
-            animation: fadeIn 1s ease-out;
-        }
-
-        .projects h2 {
+        #projects h2 {
             font-size: 3rem;
             margin-bottom: 10px;
         }
 
-        .projects p {
+        #projects p.subtitle {
             font-size: 1.5rem;
             margin-bottom: 50px;
             text-align: center;
-            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .projects-container {
@@ -175,30 +196,35 @@
             flex-wrap: wrap;
         }
 
-        .projects-container .project {
+        .project {
             width: 280px;
             text-align: center;
             transition: 0.3s ease;
+            background: #252525;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
 
-        .projects-container .project img {
+        .project:hover {
+            transform: translateY(-10px);
+        }
+
+        .project img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 10px;
-            transition: 0.3s ease;
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
 
-        .projects-container .project img:hover {
-            transform: scale(1.05);
-        }
-
-        .projects-container .project h3 {
+        .project h3 {
             font-size: 1.4rem;
             margin-top: 15px;
+            color: #ff4081;
         }
 
-        .projects-container .project p {
+        .project p {
             font-size: 1rem;
             color: #bbb;
             margin-bottom: 0;
@@ -206,11 +232,13 @@
 
         /* Contact Section */
         #contact {
-            margin-top: 80px;
-            padding: 60px 20px;
-            text-align: center;
+            background-color: #222;
+        }
+
+        #contact .container {
             max-width: 1200px;
             width: 100%;
+            padding: 0 20px;
         }
 
         #contact h2 {
@@ -218,20 +246,30 @@
             margin-bottom: 20px;
         }
 
-        #contact p {
+        #contact p.subtitle {
             font-size: 1.5rem;
             margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .contact-info {
             padding: 40px;
-            background-color: #222;
+            background-color: rgba(0,0,0,0.2);
             border-radius: 10px;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .contact-info a {
-            margin: 0 15px;
+            margin: 0;
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
         }
 
         /* Footer */
@@ -240,8 +278,6 @@
             color: #fff;
             padding: 40px 20px;
             text-align: center;
-            margin-top: 80px;
-            width: 100%;
         }
 
         footer p {
@@ -262,59 +298,83 @@
 
         /* Responsive Design */
         @media screen and (max-width: 768px) {
-            .projects-container {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .contact-info a {
-                display: block;
-                margin: 15px auto;
-                max-width: 250px;
-            }
-            
-            header h1 {
+            #home h1 {
                 font-size: 2.5rem;
             }
             
-            header p {
+            #home p {
                 font-size: 1.2rem;
+            }
+            
+            nav ul li {
+                margin: 0 15px;
+            }
+            
+            nav ul li a {
+                font-size: 1rem;
+                padding: 8px 12px;
+            }
+            
+            .projects-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .project {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                padding: 30px 20px;
+            }
+            
+            .contact-info a {
+                width: 100%;
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Bun venit pe site-ul meu!</h1>
-    <p>Developer PHP, HTML, C++, JavaScript și Python</p>
-    <a href="#contact" class="cta-button">Contactează-mă</a>
-</header>
+<!-- Home Section -->
+<section id="home" class="page">
+    <div class="content">
+        <h1>Bun venit pe site-ul meu!</h1>
+        <p>Developer PHP, HTML, C++, JavaScript și Python</p>
+        <a href="#contact" class="cta-button">Contactează-mă</a>
+    </div>
+</section>
 
+<!-- Navigation -->
 <nav>
     <ul>
+        <li><a href="#home">Acasă</a></li>
         <li><a href="#projects">Proiecte</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
 
-<section id="projects">
-    <div class="projects">
+<!-- Projects Section -->
+<section id="projects" class="page">
+    <div class="container">
         <h2>Proiecte</h2>
-        <p>Explorează câteva dintre proiectele la care am lucrat</p>
+        <p class="subtitle">Explorează câteva dintre proiectele la care am lucrat</p>
         <div class="projects-container">
             <div class="project">
-                <img src="https://via.placeholder.com/280x200" alt="Proiect 1">
+                <img src="https://source.unsplash.com/random/600x400/?web,app" alt="Proiect 1">
                 <h3>Proiect 1</h3>
                 <p>Aplicație web dinamică în PHP și JS</p>
             </div>
             <div class="project">
-                <img src="https://via.placeholder.com/280x200" alt="Proiect 2">
+                <img src="https://source.unsplash.com/random/600x400/?python,data" alt="Proiect 2">
                 <h3>Proiect 2</h3>
                 <p>Automatizare proces în Python pentru analize de date</p>
             </div>
             <div class="project">
-                <img src="https://via.placeholder.com/280x200" alt="Proiect 3">
+                <img src="https://source.unsplash.com/random/600x400/?cpp,code" alt="Proiect 3">
                 <h3>Proiect 3</h3>
                 <p>Web app interactiv folosind C++ și JavaScript</p>
             </div>
@@ -322,16 +382,20 @@
     </div>
 </section>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Vrei să discutăm despre o colaborare? Mă poți contacta prin următoarele canale:</p>
-    <div class="contact-info">
-        <a href="https://www.instagram.com/hxllen1/" target="_blank" class="cta-button">INSTAGRAM</a>
-        <a href="https://discordapp.com/users/303931126295298058" target="_blank" class="cta-button">DISCORD</a>
-        <a href="https://github.com/username" target="_blank" class="cta-button">GITHUB</a>
+<!-- Contact Section -->
+<section id="contact" class="page">
+    <div class="container">
+        <h2>Contact</h2>
+        <p class="subtitle">Vrei să discutăm despre o colaborare? Mă poți contacta prin următoarele canale:</p>
+        <div class="contact-info">
+            <a href="https://www.instagram.com/hxllen1/" target="_blank" rel="noopener noreferrer" class="cta-button">INSTAGRAM</a>
+            <a href="https://discordapp.com/users/303931126295298058" target="_blank" rel="noopener noreferrer" class="cta-button">DISCORD</a>
+            <a href="https://github.com/username" target="_blank" rel="noopener noreferrer" class="cta-button">GITHUB</a>
+        </div>
     </div>
 </section>
 
+<!-- Footer -->
 <footer>
     <p>&copy; 2025 HALLEN Web & Software | Toate drepturile rezervate</p>
 </footer>
