@@ -1,3 +1,161 @@
+<style>
+    /* Global styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #111;
+        color: #fff;
+    }
+
+    h1, h2, h3 {
+        font-weight: 600;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Header */
+    header {
+        height: 100vh;
+        background: url('https://source.unsplash.com/random/1920x1080') no-repeat center center/cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        color: #fff;
+        position: relative;
+        z-index: 1;
+    }
+
+    header h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    header p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    header .cta-button {
+        padding: 15px 40px;
+        font-size: 1.2rem;
+        background-color: #ff4081;
+        border-radius: 30px;
+        color: #fff;
+        border: 2px solid #ff4081;
+        transition: 0.3s ease;
+    }
+
+    header .cta-button:hover {
+        background-color: transparent;
+        color: #ff4081;
+        border: 2px solid #ff4081;
+    }
+
+    /* Navigation */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 15px 0;
+        z-index: 2;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+    }
+
+    nav ul li {
+        margin: 0 30px;
+    }
+
+    nav ul li a {
+        color: #fff;
+        font-size: 1.2rem;
+        padding: 10px 15px;
+        display: inline-block;
+        border-radius: 25px;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: 0.3s ease;
+        position: relative;
+    }
+
+    nav ul li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background-color: #ff4081;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+    }
+
+    nav ul li a:hover {
+        color: #ff4081;
+    }
+
+    nav ul li a:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    /* Restul site-ului */
+    section {
+        padding: 80px 20px;
+        text-align: center;
+        animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<header>
+    <h1>Bun venit pe site-ul meu!</h1>
+    <p>Developer PHP, HTML, C++, JavaScript și Python</p>
+    <a href="#contact" class="cta-button">Contactează-mă</a>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#skills">Abilități</a></li>
+        <li><a href="#projects">Proiecte</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Restul site-ului rămâne același -->
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
