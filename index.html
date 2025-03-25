@@ -6,7 +6,7 @@
     <meta name="description" content="Website de prezentare pentru un developer PHP, HTML, C++, JavaScript și Python.">
     <title>HALLEN | Developer Web & Software</title>
     <style>
-        /* Global styles */
+        /* Reset și stiluri de bază */
         * {
             margin: 0;
             padding: 0;
@@ -18,23 +18,12 @@
             background-color: #111;
             color: #fff;
             line-height: 1.6;
-            scroll-behavior: smooth;
             overflow-x: hidden;
-            scroll-snap-type: y mandatory;
-            scroll-padding-top: 70px;
+            scroll-behavior: smooth;
+            scroll-snap-type: y proximity;
         }
 
-        h1, h2, h3 {
-            font-weight: 600;
-            text-align: center;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Full-page sections */
+        /* Stiluri pentru secțiuni */
         .page {
             min-height: 100vh;
             width: 100%;
@@ -45,27 +34,12 @@
             padding: 80px 20px;
             position: relative;
             scroll-snap-align: start;
-            transition: transform 0.5s ease, opacity 0.5s ease;
+            scroll-snap-stop: always;
         }
 
-        /* Active page effect */
-        .page:not(.active) {
-            opacity: 0.5;
-            transform: scale(0.95);
-        }
-
-        .page.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* Header/Hero Section */
+        /* Stiluri specifice pentru fiecare secțiune */
         #home {
-            height: 100vh;
             background: url('https://source.unsplash.com/random/1920x1080?coding,technology') no-repeat center center/cover;
-            text-align: center;
-            color: #fff;
-            position: relative;
         }
 
         #home::before {
@@ -82,40 +56,54 @@
         #home .content {
             position: relative;
             z-index: 2;
+            text-align: center;
             max-width: 800px;
-            margin: 0 auto;
-            transition: transform 0.5s ease;
         }
 
-        #home:not(.active) .content {
-            transform: translateY(-50px);
+        #projects {
+            background-color: #1e1e1e;
         }
 
-        #home h1 {
-            font-size: 3.5rem;
+        #contact {
+            background-color: #222;
+        }
+
+        /* Stiluri pentru text și conținut */
+        h1, h2, h3 {
+            font-weight: 600;
+            text-align: center;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            transition: transform 0.5s ease, opacity 0.5s ease;
         }
 
-        #home:not(.active) h1 {
-            transform: translateY(-20px);
-            opacity: 0;
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 3rem; }
+        p { font-size: 1.5rem; }
+
+        /* Butoane */
+        .cta-button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background-color: #ff4081;
+            border-radius: 30px;
+            color: #fff;
+            border: 2px solid #ff4081;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            display: inline-block;
+            cursor: pointer;
+            margin-top: 30px;
         }
 
-        #home p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-            transition: transform 0.5s ease 0.1s, opacity 0.5s ease 0.1s;
+        .cta-button:hover {
+            background-color: transparent;
+            color: #ff4081;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
         }
 
-        #home:not(.active) p {
-            transform: translateY(-20px);
-            opacity: 0;
-        }
-
-        /* Navigation */
+        /* Navigație */
         nav {
             position: fixed;
             top: 0;
@@ -124,13 +112,8 @@
             background-color: rgba(0, 0, 0, 0.7);
             padding: 15px 0;
             z-index: 100;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(5px);
             transition: background-color 0.3s ease;
-        }
-
-        nav.scrolled {
-            background-color: rgba(0, 0, 0, 0.9);
         }
 
         nav ul {
@@ -178,87 +161,13 @@
             transform-origin: bottom left;
         }
 
-        /* Buttons */
-        .cta-button {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            background-color: #ff4081;
-            border-radius: 30px;
-            color: #fff;
-            border: 2px solid #ff4081;
-            transition: all 0.5s ease 0.2s;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 1px;
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        #home:not(.active) .cta-button {
-            transform: translateY(20px);
-            opacity: 0;
-        }
-
-        .cta-button:hover {
-            background-color: transparent;
-            color: #ff4081;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
-        }
-
-        /* Projects Section */
-        #projects {
-            background-color: #1e1e1e;
-        }
-
-        #projects .container {
-            max-width: 1200px;
-            width: 100%;
-            padding: 0 20px;
-            transition: transform 0.5s ease;
-        }
-
-        #projects:not(.active) .container {
-            transform: translateY(50px);
-        }
-
-        #projects h2 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            transition: transform 0.5s ease, opacity 0.5s ease;
-        }
-
-        #projects:not(.active) h2 {
-            transform: translateY(-20px);
-            opacity: 0;
-        }
-
-        #projects p.subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 50px;
-            text-align: center;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            transition: transform 0.5s ease 0.1s, opacity 0.5s ease 0.1s;
-        }
-
-        #projects:not(.active) p.subtitle {
-            transform: translateY(-20px);
-            opacity: 0;
-        }
-
+        /* Proiecte */
         .projects-container {
             display: flex;
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
-            transition: transform 0.5s ease 0.2s, opacity 0.5s ease 0.2s;
-        }
-
-        #projects:not(.active) .projects-container {
-            transform: translateY(20px);
-            opacity: 0;
+            margin-top: 50px;
         }
 
         .project {
@@ -285,79 +194,25 @@
 
         .project h3 {
             font-size: 1.4rem;
-            margin-top: 15px;
             color: #ff4081;
         }
 
         .project p {
             font-size: 1rem;
             color: #bbb;
-            margin-bottom: 0;
         }
 
-        /* Contact Section */
-        #contact {
-            background-color: #222;
-        }
-
-        #contact .container {
-            max-width: 1200px;
-            width: 100%;
-            padding: 0 20px;
-            transition: transform 0.5s ease;
-        }
-
-        #contact:not(.active) .container {
-            transform: translateY(50px);
-        }
-
-        #contact h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            transition: transform 0.5s ease, opacity 0.5s ease;
-        }
-
-        #contact:not(.active) h2 {
-            transform: translateY(-20px);
-            opacity: 0;
-        }
-
-        #contact p.subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            transition: transform 0.5s ease 0.1s, opacity 0.5s ease 0.1s;
-        }
-
-        #contact:not(.active) p.subtitle {
-            transform: translateY(-20px);
-            opacity: 0;
-        }
-
+        /* Contact */
         .contact-info {
-            padding: 40px;
-            background-color: rgba(0,0,0,0.2);
-            border-radius: 10px;
-            text-align: center;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            transition: transform 0.5s ease 0.2s, opacity 0.5s ease 0.2s;
-        }
-
-        #contact:not(.active) .contact-info {
-            transform: translateY(20px);
-            opacity: 0;
+            margin-top: 50px;
         }
 
         .contact-info a {
             margin: 0;
-            flex: 1;
-            min-width: 200px;
-            max-width: 250px;
         }
 
         /* Footer */
@@ -366,22 +221,14 @@
             color: #fff;
             padding: 40px 20px;
             text-align: center;
-            scroll-snap-align: end;
+            scroll-snap-align: start;
         }
 
-        footer p {
-            font-size: 1rem;
-        }
-
-        /* Responsive Design */
-        @media screen and (max-width: 768px) {
-            #home h1 {
-                font-size: 2.5rem;
-            }
-            
-            #home p {
-                font-size: 1.2rem;
-            }
+        /* Responsiv */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2.2rem; }
+            p { font-size: 1.2rem; }
             
             nav ul li {
                 margin: 0 15px;
@@ -394,39 +241,26 @@
             
             .projects-container {
                 flex-direction: column;
-                gap: 30px;
-            }
-            
-            .project {
-                width: 100%;
-                max-width: 350px;
+                align-items: center;
             }
             
             .contact-info {
                 flex-direction: column;
-                padding: 30px 20px;
+                align-items: center;
             }
             
-            .contact-info a {
+            .cta-button {
                 width: 100%;
-                max-width: 100%;
+                max-width: 250px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- Home Section -->
-<section id="home" class="page active">
-    <div class="content">
-        <h1>Bun venit pe site-ul meu!</h1>
-        <p>Developer PHP, HTML, C++, JavaScript și Python</p>
-        <a href="#contact" class="cta-button">Contactează-mă</a>
-    </div>
-</section>
-
-<!-- Navigation -->
-<nav id="main-nav">
+<!-- Navigație -->
+<nav>
     <ul>
         <li><a href="#home">Acasă</a></li>
         <li><a href="#projects">Proiecte</a></li>
@@ -434,11 +268,20 @@
     </ul>
 </nav>
 
-<!-- Projects Section -->
+<!-- Secțiunea Acasă -->
+<section id="home" class="page">
+    <div class="content">
+        <h1>Bun venit pe site-ul meu!</h1>
+        <p>Developer PHP, HTML, C++, JavaScript și Python</p>
+        <a href="#contact" class="cta-button">Contactează-mă</a>
+    </div>
+</section>
+
+<!-- Secțiunea Proiecte -->
 <section id="projects" class="page">
     <div class="container">
         <h2>Proiecte</h2>
-        <p class="subtitle">Explorează câteva dintre proiectele la care am lucrat</p>
+        <p>Explorează câteva dintre proiectele la care am lucrat</p>
         <div class="projects-container">
             <div class="project">
                 <img src="https://source.unsplash.com/random/600x400/?web,app" alt="Proiect 1">
@@ -459,11 +302,11 @@
     </div>
 </section>
 
-<!-- Contact Section -->
+<!-- Secțiunea Contact -->
 <section id="contact" class="page">
     <div class="container">
         <h2>Contact</h2>
-        <p class="subtitle">Vrei să discutăm despre o colaborare? Mă poți contacta prin următoarele canale:</p>
+        <p>Vrei să discutăm despre o colaborare?</p>
         <div class="contact-info">
             <a href="https://www.instagram.com/hxllen1/" target="_blank" rel="noopener noreferrer" class="cta-button">INSTAGRAM</a>
             <a href="https://discordapp.com/users/303931126295298058" target="_blank" rel="noopener noreferrer" class="cta-button">DISCORD</a>
@@ -478,71 +321,57 @@
 </footer>
 
 <script>
-    // Intersection Observer pentru a detecta pagina activă
-    const pages = document.querySelectorAll('.page');
-    const nav = document.getElementById('main-nav');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Elimină clasa active de la toate paginile
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                });
+    // Facem scroll snapping mai "agresiv" pentru a centra secțiunile mai bine
+    document.addEventListener('DOMContentLoaded', () => {
+        let lastScrollTime = 0;
+        const scrollDelay = 1000; // 1 secundă între scroll-uri
+        
+        window.addEventListener('scroll', () => {
+            const now = Date.now();
+            if (now - lastScrollTime < scrollDelay) return;
+            
+            lastScrollTime = now;
+            
+            const pages = document.querySelectorAll('.page');
+            let closestPage = null;
+            let closestDistance = Infinity;
+            
+            // Găsim pagina cea mai apropiată de centrul ecranului
+            pages.forEach(page => {
+                const rect = page.getBoundingClientRect();
+                const pageCenter = rect.top + rect.height / 2;
+                const viewportCenter = window.innerHeight / 2;
+                const distance = Math.abs(pageCenter - viewportCenter);
                 
-                // Adaugă clasa active doar la pagina vizibilă
-                entry.target.classList.add('active');
-                
-                // Actualizează link-ul activ din nav
-                const id = entry.target.getAttribute('id');
-                const navLinks = document.querySelectorAll('nav a');
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.classList.add('active');
-                    }
-                });
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestPage = page;
+                }
+            });
+            
+            // Dacă suntem suficient de aproape de o pagină, facem scroll să o centrăm
+            if (closestPage && closestDistance < window.innerHeight * 0.4) {
+                setTimeout(() => {
+                    closestPage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
             }
         });
-    }, {
-        threshold: 0.5
-    });
-
-    // Observă fiecare pagină
-    pages.forEach(page => {
-        observer.observe(page);
-    });
-
-    // Schimbă culoarea navbar la scroll
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
-
-    // Impedă scroll-ul rapid pentru o experiență mai bună
-    let isScrolling = false;
-    window.addEventListener('wheel', (e) => {
-        if (isScrolling) {
-            e.preventDefault();
-            return;
-        }
         
-        if (Math.abs(e.deltaY) > 50) {
-            isScrolling = true;
-            setTimeout(() => {
-                isScrolling = false;
-            }, 1000);
-        }
-    }, { passive: false });
-
-    // Animare la încărcarea paginii
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-            document.getElementById('home').classList.add('active');
-        }, 100);
+        // Actualizăm navigația când schimbăm pagina
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                    const id = entry.target.id;
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('.page').forEach(page => {
+            observer.observe(page);
+        });
     });
 </script>
 
