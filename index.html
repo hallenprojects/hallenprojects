@@ -124,54 +124,80 @@
             z-index: 4;
         }
 
-        /* Container proiecte */
-        .projects-container {
+        /* Slideshow proiecte */
+        .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            margin: 50px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .slideshow {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .slide-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .slide-content p {
+            font-size: 1.1rem;
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        /* Butoane navigare slideshow */
+        .slideshow-nav {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 50px;
-            max-width: 1200px;
-            position: relative;
-            z-index: 4;
+            margin-top: 20px;
         }
 
-        /* Carduri proiecte */
-        .project {
-            width: 280px;
-            text-align: center;
+        .slideshow-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
             transition: all 0.3s ease;
-            background: rgba(37, 37, 37, 0.8);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            backdrop-filter: blur(5px);
-            position: relative;
-            z-index: 4;
         }
 
-        .project:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(79, 195, 247, 0.2);
-        }
-
-        .project img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .project h3 {
-            font-size: 1.4rem;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-        }
-
-        .project p {
-            font-size: 1rem;
-            color: #bbb;
+        .dot.active {
+            background: var(--accent-color);
+            transform: scale(1.2);
         }
 
         /* Butoane - NOUL EFECT LA HOVER */
@@ -378,16 +404,16 @@
                 padding: 8px 12px;
             }
             
-            .projects-container,
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
+            .slide img {
+                height: 350px;
             }
             
-            .project {
-                width: 100%;
-                max-width: 350px;
-                margin-bottom: 20px;
+            .slide-content h3 {
+                font-size: 1.4rem;
+            }
+            
+            .slide-content p {
+                font-size: 1rem;
             }
             
             .cta-button {
@@ -424,22 +450,51 @@
     <div class="particles" id="particles-projects"></div>
     <div class="content">
         <h2>Projects</h2>
-        <p>Explore some projects ive worked on</p>
-        <div class="projects-container">
-            <div class="project">
-                <img src="https://source.unsplash.com/random/600x400/?web,app" alt="Proiect 1">
-                <h3>Proiect 1</h3>
-                <p>Aplicație web dinamică în PHP și JS</p>
+        <p>Explore some projects I've worked on</p>
+        
+        <div class="slideshow-container">
+            <div class="slideshow" id="slideshow">
+                <!-- Slide 1 -->
+                <div class="slide">
+                    <img src="https://source.unsplash.com/random/800x450/?web,app" alt="Proiect 1">
+                    <div class="slide-content">
+                        <h3>Proiect 1</h3>
+                        <p>Aplicație web dinamică în PHP și JS cu funcționalități complexe de gestionare a datelor și interfață interactivă.</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <img src="https://source.unsplash.com/random/800x450/?python,data" alt="Proiect 2">
+                    <div class="slide-content">
+                        <h3>Proiect 2</h3>
+                        <p>Automatizare proces în Python pentru analize de date și generare rapoarte cu vizualizări interactive.</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <img src="https://source.unsplash.com/random/800x450/?cpp,code" alt="Proiect 3">
+                    <div class="slide-content">
+                        <h3>Proiect 3</h3>
+                        <p>Web app interactiv folosind C++ și JavaScript pentru procesare rapidă a datelor pe partea de server.</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="slide">
+                    <img src="https://source.unsplash.com/random/800x450/?database,backend" alt="Proiect 4">
+                    <div class="slide-content">
+                        <h3>Proiect 4</h3>
+                        <p>Sistem de gestionare a bazelor de date cu interfață administrativă și rapoarte personalizate.</p>
+                    </div>
+                </div>
             </div>
-            <div class="project">
-                <img src="https://source.unsplash.com/random/600x400/?python,data" alt="Proiect 2">
-                <h3>Proiect 2</h3>
-                <p>Automatizare proces în Python pentru analize de date</p>
-            </div>
-            <div class="project">
-                <img src="https://source.unsplash.com/random/600x400/?cpp,code" alt="Proiect 3">
-                <h3>Proiect 3</h3>
-                <p>Web app interactiv folosind C++ și JavaScript</p>
+        </div>
+        
+        <div class="slideshow-nav">
+            <div class="slideshow-dots" id="slideshow-dots">
+                <!-- Punctele vor fi adăugate din JavaScript -->
             </div>
         </div>
     </div>
@@ -495,11 +550,70 @@
         }
     }
 
+    // Funcționalitate Slideshow
+    function initSlideshow() {
+        const slideshow = document.getElementById('slideshow');
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.getElementById('slideshow-dots');
+        
+        let currentSlide = 0;
+        const slideCount = slides.length;
+        
+        // Crează punctele de navigare
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+        
+        // Funcție pentru a merge la un anumit slide
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlideshow();
+        }
+        
+        // Actualizează slideshow-ul
+        function updateSlideshow() {
+            slideshow.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Actualizează punctele active
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        // Schimbă automat slide-urile la fiecare 5 secunde
+        let slideInterval = setInterval(nextSlide, 5000);
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            updateSlideshow();
+        }
+        
+        // Pause on hover
+        slideshow.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        slideshow.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         // Crează particule pentru fiecare pagină
         createParticles('particles-home', 50);
         createParticles('particles-projects', 30);
         createParticles('particles-contact', 30);
+        
+        // Initializează slideshow-ul
+        initSlideshow();
         
         const nav = document.getElementById('main-nav');
         const navLinks = document.querySelectorAll('nav a');
