@@ -151,14 +151,14 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             position: relative;
             z-index: 6;
         }
 
         .project-number {
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             color: var(--text-color);
@@ -170,7 +170,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border: 2px solid rgba(255, 255, 255, 0.3);
-            margin: 5px;
+            margin: 0;
             position: relative;
             overflow: visible;
         }
@@ -179,9 +179,40 @@
             background: var(--accent-color);
             color: var(--bg-dark);
             border-color: var(--accent-color);
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.7);
             z-index: 2;
+        }
+
+        /* Buline pentru navigarea între imagini */
+        .image-dots-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .image-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 8px 15px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+        }
+
+        .image-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-dot.active {
+            background: var(--accent-color);
+            transform: scale(1.3);
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.7);
         }
 
         /* Container pentru imaginile proiectului */
@@ -191,34 +222,7 @@
             margin-bottom: 20px;
             background: var(--bg-dark);
             border-radius: 10px;
-            padding: 10px;
-        }
-
-        /* Buline pentru navigarea între imagini */
-        .image-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 15px 0;
-            padding-top: 5px;
-            position: relative;
-            z-index: 6;
-        }
-
-        .image-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 2px;
-        }
-
-        .image-dot.active {
-            background: var(--accent-color);
-            transform: scale(1.3);
-            box-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
+            padding: 15px;
         }
 
         .project-images {
@@ -253,9 +257,9 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 0, 0, 0.5);
+            width: 42px;
+            height: 42px;
+            background: rgba(0, 0, 0, 0.6);
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -266,7 +270,7 @@
         }
 
         .project-arrow:hover {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
         }
 
         .project-arrow-left {
@@ -279,7 +283,7 @@
 
         .project-arrow i {
             color: white;
-            font-size: 20px;
+            font-size: 22px;
         }
 
         .slide-content {
@@ -476,9 +480,9 @@
             }
             
             .project-number {
-                width: 38px;
-                height: 38px;
-                font-size: 1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
             }
             
             .project-image img {
@@ -498,12 +502,12 @@
             }
             
             .project-arrow {
-                width: 30px;
-                height: 30px;
+                width: 34px;
+                height: 34px;
             }
             
             .project-arrow i {
-                font-size: 16px;
+                font-size: 18px;
             }
             
             .cta-button {
@@ -556,14 +560,16 @@
             <div class="slideshow" id="slideshow">
                 <!-- Proiect 1 -->
                 <div class="slide">
-                    <div class="project-images-container">
-                        <!-- Bulinele pentru imagini -->
+                    <!-- Bulinele pentru imagini -->
+                    <div class="image-dots-container">
                         <div class="image-dots" id="project1-dots">
                             <div class="image-dot active" onclick="goToImage('project1', 0)"></div>
                             <div class="image-dot" onclick="goToImage('project1', 1)"></div>
                             <div class="image-dot" onclick="goToImage('project1', 2)"></div>
                         </div>
-                        
+                    </div>
+                    
+                    <div class="project-images-container">
                         <div class="project-images" id="project1-images">
                             <div class="project-image">
                                 <img src="https://i.imgur.com/WprXNXA.png" alt="Proiect 1 - Imagine 1">
@@ -590,14 +596,16 @@
                 
                 <!-- Proiect 2 -->
                 <div class="slide">
-                    <div class="project-images-container">
-                        <!-- Bulinele pentru imagini -->
+                    <!-- Bulinele pentru imagini -->
+                    <div class="image-dots-container">
                         <div class="image-dots" id="project2-dots">
                             <div class="image-dot active" onclick="goToImage('project2', 0)"></div>
                             <div class="image-dot" onclick="goToImage('project2', 1)"></div>
                             <div class="image-dot" onclick="goToImage('project2', 2)"></div>
                         </div>
-                        
+                    </div>
+                    
+                    <div class="project-images-container">
                         <div class="project-images" id="project2-images">
                             <div class="project-image">
                                 <img src="https://source.unsplash.com/random/1200x600/?python,data" alt="Proiect 2 - Imagine 1">
@@ -624,14 +632,16 @@
                 
                 <!-- Proiect 3 -->
                 <div class="slide">
-                    <div class="project-images-container">
-                        <!-- Bulinele pentru imagini -->
+                    <!-- Bulinele pentru imagini -->
+                    <div class="image-dots-container">
                         <div class="image-dots" id="project3-dots">
                             <div class="image-dot active" onclick="goToImage('project3', 0)"></div>
                             <div class="image-dot" onclick="goToImage('project3', 1)"></div>
                             <div class="image-dot" onclick="goToImage('project3', 2)"></div>
                         </div>
-                        
+                    </div>
+                    
+                    <div class="project-images-container">
                         <div class="project-images" id="project3-images">
                             <div class="project-image">
                                 <img src="https://source.unsplash.com/random/1200x600/?cpp,code" alt="Proiect 3 - Imagine 1">
@@ -658,14 +668,16 @@
                 
                 <!-- Proiect 4 -->
                 <div class="slide">
-                    <div class="project-images-container">
-                        <!-- Bulinele pentru imagini -->
+                    <!-- Bulinele pentru imagini -->
+                    <div class="image-dots-container">
                         <div class="image-dots" id="project4-dots">
                             <div class="image-dot active" onclick="goToImage('project4', 0)"></div>
                             <div class="image-dot" onclick="goToImage('project4', 1)"></div>
                             <div class="image-dot" onclick="goToImage('project4', 2)"></div>
                         </div>
-                        
+                    </div>
+                    
+                    <div class="project-images-container">
                         <div class="project-images" id="project4-images">
                             <div class="project-image">
                                 <img src="https://source.unsplash.com/random/1200x600/?database,backend" alt="Proiect 4 - Imagine 1">
