@@ -21,13 +21,14 @@
             scroll-behavior: smooth;
         }
 
-        /* Culori */
+        /* Culori noi */
         :root {
             --primary-color: #4fc3f7;
             --primary-dark: #0288d1;
             --accent-color: #00e5ff;
             --text-color: #ffffff;
             --dark-overlay: rgba(0, 0, 0, 0.3);
+            --image-border: 1px solid rgba(0, 0, 0, 0.7);
         }
 
         /* Stiluri pentru secțiuni */
@@ -38,7 +39,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 80px 20px;
             position: relative;
             overflow: hidden;
         }
@@ -74,29 +75,53 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* Animatie particule */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            to { transform: translateY(-100vh); }
+        }
+
         /* Stiluri conținut */
         .content {
             position: relative;
             z-index: 4;
             text-align: center;
             max-width: 1100px;
-            width: 100%;
             padding: 20px;
+            width: 100%;
         }
 
         h1, h2, h3 {
             font-weight: 600;
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         h1 { font-size: 3.5rem; }
         h2 { font-size: 3rem; }
         p { 
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             text-align: center;
             max-width: 800px;
-            margin: 0 auto 20px;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 4;
         }
 
         /* Slideshow proiecte */
@@ -104,7 +129,8 @@
             position: relative;
             width: 100%;
             max-width: 1100px;
-            margin: 10px auto;
+            margin: 20px auto; /* Redus margin-ul */
+            overflow: hidden;
         }
 
         .slideshow {
@@ -117,92 +143,166 @@
             min-width: 100%;
             display: flex;
             flex-direction: column;
+            box-sizing: border-box;
         }
 
-        /* Container imagini */
-        .project-images-container {
-            position: relative;
-            width: 100%;
-            margin: 5px 0;
-        }
-
-        .project-images {
+        /* Numere pentru navigarea între proiecte */
+        .project-numbers-container {
             display: flex;
-            overflow: hidden;
-            width: 100%;
-            height: 1100px;
+            justify-content: center;
+            margin-bottom: 10px; /* Redus spațiul */
+            padding-top: 5px;
         }
 
-        .project-image {
-            min-width: 100%;
+        .project-numbers {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            z-index: 6;
+        }
+
+        .project-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
         }
 
-        .project-image img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            border: 1px solid rgba(0,0,0,0.2);
+        .project-number.active {
+            background: var(--accent-color);
+            color: #111;
+            border-color: var(--accent-color);
+            transform: scale(1.1);
+            box-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
+            z-index: 2;
         }
 
-        /* Navigare imagini */
+        /* Buline pentru navigarea între imagini */
         .image-dots-container {
             display: flex;
             justify-content: center;
-            margin: 5px 0;
+            margin-bottom: 5px; /* Redus spațiul */
+            padding: 1px 0;
         }
 
         .image-dots {
             display: flex;
+            justify-content: center;
             gap: 8px;
+            padding: 4px 12px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            position: relative;
         }
 
         .image-dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .image-dot.active {
             background: var(--accent-color);
+            transform: scale(1.2);
+            box-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
         }
 
-        /* Săgeți navigare */
+        /* Container pentru imaginile proiectului */
+        .project-images-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 10px; /* Redus spațiul */
+            background: transparent;
+            border-radius: 1px;
+            padding: 0;
+        }
+
+        .project-images {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            border-radius: 1px;
+            height: 1100px;
+            background: transparent;
+        }
+
+        .project-image {
+            min-width: 100%;
+            transition: transform 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+        }
+
+        .project-image img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            border-radius: 1px;
+            border: var(--image-border);
+        }
+
+        /* Săgeți de navigare */
         .project-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             width: 36px;
             height: 36px;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0, 0, 0, 0.6);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             z-index: 5;
+            transition: all 0.3s ease;
         }
 
-        .project-arrow-left { left: 10px; }
-        .project-arrow-right { right: 10px; }
+        .project-arrow:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .project-arrow-left {
+            left: 12px;
+        }
+
+        .project-arrow-right {
+            right: 12px;
+        }
 
         .project-arrow i {
             color: white;
             font-size: 18px;
         }
 
-        /* Conținut slide */
         .slide-content {
             background: rgba(37, 37, 37, 0.9);
-            padding: 15px;
+            padding: 16px;
             border-radius: 6px;
             text-align: left;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 10px; /* Redus spațiul */
         }
 
         .slide-content h3 {
@@ -226,44 +326,215 @@
             border-radius: 26px;
             color: var(--text-color);
             border: 2px solid var(--primary-color);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             text-transform: uppercase;
             font-weight: bold;
+            letter-spacing: 1px;
             display: inline-block;
             cursor: pointer;
             margin: 8px;
             text-decoration: none;
+            position: relative;
+            z-index: 4;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .cta-button:hover {
             background-color: transparent;
             color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Container contact */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 40px;
+            max-width: 1200px;
+            padding: 16px;
+            position: relative;
+            z-index: 4;
+        }
+
+        /* Navigație */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 12px 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 8px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            padding: 8px 12px;
+            display: inline-block;
+            border-radius: 22px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            text-decoration: none;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--accent-color);
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+        }
+
+        nav ul li a:hover::before,
+        nav ul li a.active::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        nav ul li a:hover::after {
+            transform: translateX(100%);
         }
 
         /* Footer */
         footer {
             background-color: #111;
             color: var(--text-color);
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
+            position: relative;
+            z-index: 4;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             h1 { font-size: 2.3rem; }
             h2 { font-size: 1.8rem; }
-            p { font-size: 1rem; }
+            p { font-size: 1.1rem; }
+            
+            nav ul li {
+                margin: 0 8px;
+            }
+            
+            nav ul li a {
+                font-size: 0.9rem;
+                padding: 6px 9px;
+            }
+            
+            .project-number {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
             
             .project-images {
                 height: 500px;
             }
             
+            .slide-content {
+                padding: 12px;
+            }
+            
+            .slide-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            .slide-content p {
+                font-size: 0.85rem;
+            }
+            
+            .project-arrow {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .project-arrow i {
+                font-size: 14px;
+            }
+            
             .cta-button {
+                width: 100%;
+                max-width: 220px;
+                margin: 6px 0;
                 padding: 10px 20px;
                 font-size: 1rem;
             }
+
+            .image-dot {
+                width: 8px;
+                height: 8px;
+            }
         }
     </style>
+    <!-- Font Awesome pentru săgeți -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -279,23 +550,36 @@
 
 <!-- Secțiunea Acasă -->
 <section id="home" class="page">
+    <div class="particles" id="particles-home"></div>
     <div class="content">
         <h1>WELCOME</h1>
-        <p>I'm HALLEN. FullStack Developer, mainly focusing on JavaScript, PHP, Python, C++ and HTML & CSS.</p>
+        <p>I'm HALLEN. FullStack Developer, mainly focusing on JavaScript, PHP, Python, C++ and HTML & CSS. I'm a freelance developer, ready to help you throughout your project.</p>
         <a href="#contact" class="cta-button">Contact Me</a>
     </div>
 </section>
 
 <!-- Secțiunea Proiecte -->
 <section id="projects" class="page">
+    <div class="particles" id="particles-projects"></div>
     <div class="content">
         <h2>Projects</h2>
         <p>Explore some projects I've worked on</p>
         
         <div class="slideshow-container">
+            <!-- Numerele proiectelor -->
+            <div class="project-numbers-container">
+                <div class="project-numbers" id="project-numbers">
+                    <div class="project-number active" onclick="goToSlide(0)">1</div>
+                    <div class="project-number" onclick="goToSlide(1)">2</div>
+                    <div class="project-number" onclick="goToSlide(2)">3</div>
+                    <div class="project-number" onclick="goToSlide(3)">4</div>
+                </div>
+            </div>
+            
             <div class="slideshow" id="slideshow">
                 <!-- Proiect 1 -->
                 <div class="slide">
+                    <!-- Bulinele pentru imagini -->
                     <div class="image-dots-container">
                         <div class="image-dots" id="project1-dots">
                             <div class="image-dot active" onclick="goToImage('project1', 0)"></div>
@@ -307,13 +591,13 @@
                     <div class="project-images-container">
                         <div class="project-images" id="project1-images">
                             <div class="project-image">
-                                <img src="https://i.imgur.com/WprXNXA.png" alt="Project 1 Image 1">
+                                <img src="https://i.imgur.com/WprXNXA.png" alt="Proiect 1 - Imagine 1">
                             </div>
                             <div class="project-image">
-                                <img src="https://i.imgur.com/abc123.jpg" alt="Project 1 Image 2">
+                                <img src="https://i.imgur.com/abc123.jpg" alt="Proiect 1 - Imagine 2">
                             </div>
                             <div class="project-image">
-                                <img src="https://i.imgur.com/def456.jpg" alt="Project 1 Image 3">
+                                <img src="https://i.imgur.com/def456.jpg" alt="Proiect 1 - Imagine 3">
                             </div>
                         </div>
                         <div class="project-arrow project-arrow-left" onclick="prevImage('project1')">
@@ -331,6 +615,7 @@
                 
                 <!-- Proiect 2 -->
                 <div class="slide">
+                    <!-- Bulinele pentru imagini -->
                     <div class="image-dots-container">
                         <div class="image-dots" id="project2-dots">
                             <div class="image-dot active" onclick="goToImage('project2', 0)"></div>
@@ -342,13 +627,13 @@
                     <div class="project-images-container">
                         <div class="project-images" id="project2-images">
                             <div class="project-image">
-                                <img src="https://source.unsplash.com/random/1200x600/?python,data" alt="Project 2 Image 1">
+                                <img src="https://source.unsplash.com/random/1200x600/?python,data" alt="Proiect 2 - Imagine 1">
                             </div>
                             <div class="project-image">
-                                <img src="https://source.unsplash.com/random/1200x600/?python,code" alt="Project 2 Image 2">
+                                <img src="https://source.unsplash.com/random/1200x600/?python,code" alt="Proiect 2 - Imagine 2">
                             </div>
                             <div class="project-image">
-                                <img src="https://source.unsplash.com/random/1200x600/?python,ai" alt="Project 2 Image 3">
+                                <img src="https://source.unsplash.com/random/1200x600/?python,ai" alt="Proiect 2 - Imagine 3">
                             </div>
                         </div>
                         <div class="project-arrow project-arrow-left" onclick="prevImage('project2')">
@@ -363,6 +648,78 @@
                         <p>Automatizare proces în Python pentru analize de date și generare rapoarte cu vizualizări interactive.</p>
                     </div>
                 </div>
+                
+                <!-- Proiect 3 -->
+                <div class="slide">
+                    <!-- Bulinele pentru imagini -->
+                    <div class="image-dots-container">
+                        <div class="image-dots" id="project3-dots">
+                            <div class="image-dot active" onclick="goToImage('project3', 0)"></div>
+                            <div class="image-dot" onclick="goToImage('project3', 1)"></div>
+                            <div class="image-dot" onclick="goToImage('project3', 2)"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-images-container">
+                        <div class="project-images" id="project3-images">
+                            <div class="project-image">
+                                <img src="https://source.unsplash.com/random/1200x600/?cpp,code" alt="Proiect 3 - Imagine 1">
+                            </div>
+                            <div class="project-image">
+                                <img src="https://source.unsplash.com/random/1200x600/?cpp,game" alt="Proiect 3 - Imagine 2">
+                            </div>
+                            <div class="project-image">
+                                <img src="https://source.unsplash.com/random/1200x600/?cpp,algorithm" alt="Proiect 3 - Imagine 3">
+                            </div>
+                        </div>
+                        <div class="project-arrow project-arrow-left" onclick="prevImage('project3')">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="project-arrow project-arrow-right" onclick="nextImage('project3')">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <h3>Proiect 3</h3>
+                        <p>Web app interactiv folosind C++ și JavaScript pentru procesare rapidă a datelor pe partea de server.</p>
+                    </div>
+                </div>
+                
+                <!-- Proiect 4 -->
+                <div class="slide">
+                    <!-- Bulinele pentru imagini -->
+                    <div class="image-dots-container">
+                        <div class="image-dots" id="project4-dots">
+                            <div class="image-dot active" onclick="goToImage('project4', 0)"></div>
+                            <div class="image-dot" onclick="goToImage('project4', 1)"></div>
+                            <div class="image-dot" onclick="goToImage('project4', 2)"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-images-container">
+                        <div class="project-images" id="project4-images">
+                            <div class="project-image">
+                                <img src="https://source.unsplash.com/random/1200x600/?database,backend" alt="Proiect 4 - Imagine 1">
+                            </div>
+                            <div class="project-image">
+                                <img src="https://source.unsplash.com/random/1200x600/?database,server" alt="Proiect 4 - Imagine 2">
+                            </div>
+                            <div class="project-image">
+                                <img src="https://source.unsplash.com/random/1200x600/?database,cloud" alt="Proiect 4 - Imagine 3">
+                            </div>
+                        </div>
+                        <div class="project-arrow project-arrow-left" onclick="prevImage('project4')">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="project-arrow project-arrow-right" onclick="nextImage('project4')">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <h3>Proiect 4</h3>
+                        <p>Sistem de gestionare a bazelor de date cu interfață administrativă și rapoarte personalizate.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -370,13 +727,14 @@
 
 <!-- Secțiunea Contact -->
 <section id="contact" class="page">
+    <div class="particles" id="particles-contact"></div>
     <div class="content">
         <h2>Contact</h2>
         <p>You got a project? Lets talk below.</p>
         <div class="contact-info">
-            <a href="https://www.instagram.com/hxllen1/" target="_blank" class="cta-button">INSTAGRAM</a>
-            <a href="https://discordapp.com/users/303931126295298058" target="_blank" class="cta-button">DISCORD</a>
-            <a href="https://github.com/hallenprojects" target="_blank" class="cta-button">GITHUB</a>
+            <a href="https://www.instagram.com/hxllen1/" target="_blank" rel="noopener noreferrer" class="cta-button">INSTAGRAM</a>
+            <a href="https://discordapp.com/users/303931126295298058" target="_blank" rel="noopener noreferrer" class="cta-button">DISCORD</a>
+            <a href="https://github.com/hallenprojects" target="_blank" rel="noopener noreferrer" class="cta-button">GITHUB</a>
         </div>
     </div>
 </section>
@@ -387,52 +745,64 @@
 </footer>
 
 <script>
-    // Starea proiectelor
+    // Starea fiecărui proiect (indexul imaginii curente)
     const projectStates = {
-        project1: { currentImage: 0, totalImages: 3 },
-        project2: { currentImage: 0, totalImages: 3 },
-        project3: { currentImage: 0, totalImages: 3 },
-        project4: { currentImage: 0, totalImages: 3 }
+        project1: 0,
+        project2: 0,
+        project3: 0,
+        project4: 0
     };
 
-    // Actualizează afișarea imaginilor
+    // Starea slideshow-ului (indexul proiectului curent)
+    let currentSlide = 0;
+    const slideCount = 4;
+
+    // Funcții pentru navigarea între imagini
     function updateProjectImages(projectId) {
-        const container = document.getElementById(`${projectId}-images`);
+        const imagesContainer = document.getElementById(`${projectId}-images`);
         const dots = document.querySelectorAll(`#${projectId}-dots .image-dot`);
-        const state = projectStates[projectId];
+        const translateValue = -projectStates[projectId] * 100;
         
-        container.style.transform = `translateX(-${state.currentImage * 100}%)`;
+        imagesContainer.style.transform = `translateX(${translateValue}%)`;
         
         dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === state.currentImage);
+            if (index === projectStates[projectId]) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
         });
     }
 
-    // Navigare imagini
     function nextImage(projectId) {
-        const state = projectStates[projectId];
-        state.currentImage = (state.currentImage + 1) % state.totalImages;
+        projectStates[projectId] = (projectStates[projectId] + 1) % 3;
         updateProjectImages(projectId);
     }
 
     function prevImage(projectId) {
-        const state = projectStates[projectId];
-        state.currentImage = (state.currentImage - 1 + state.totalImages) % state.totalImages;
+        projectStates[projectId] = (projectStates[projectId] - 1 + 3) % 3;
         updateProjectImages(projectId);
     }
 
     function goToImage(projectId, index) {
-        projectStates[projectId].currentImage = index;
+        projectStates[projectId] = index;
         updateProjectImages(projectId);
     }
 
-    // Navigare proiecte
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    
+    // Funcții pentru navigarea între proiecte
     function updateSlideshow() {
         const slideshow = document.getElementById('slideshow');
+        const numbers = document.querySelectorAll('.project-number');
+        
         slideshow.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        numbers.forEach((number, index) => {
+            if (index === currentSlide) {
+                number.classList.add('active');
+            } else {
+                number.classList.remove('active');
+            }
+        });
     }
 
     function goToSlide(index) {
@@ -440,18 +810,100 @@
         updateSlideshow();
     }
 
-    // Inițializare
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        updateSlideshow();
+    }
+
+    // Funcție pentru crearea particulelor
+    function createParticles(containerId, count = 30) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        for (let i = 0; i < count; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Dimensiuni aleatorii
+            const size = Math.random() * 5 + 1;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Pozitie aleatorie
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100 + 100}%`;
+            
+            // Opacitate aleatorie
+            particle.style.opacity = Math.random() * 0.5 + 0.1;
+            
+            // Animatie aleatorie
+            const duration = Math.random() * 20 + 10;
+            const delay = Math.random() * -20;
+            particle.style.animation = `float ${duration}s linear ${delay}s infinite`;
+            
+            container.appendChild(particle);
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
-        // Inițializează imaginile pentru fiecare proiect
-        Object.keys(projectStates).forEach(projectId => {
-            updateProjectImages(projectId);
-        });
+        // Inițializează starea imaginilor pentru fiecare proiect
+        updateProjectImages('project1');
+        updateProjectImages('project2');
+        updateProjectImages('project3');
+        updateProjectImages('project4');
         
         // Inițializează slideshow-ul
         updateSlideshow();
         
-        // Navigare navbar
+        // Schimbă automat slide-urile
+        let slideInterval = setInterval(nextSlide, 5000);
+        
+        // Pause on hover
+        const slideshowContainer = document.querySelector('.slideshow-container');
+        slideshowContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        slideshowContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // Crează particule
+        createParticles('particles-home', 50);
+        createParticles('particles-projects', 30);
+        createParticles('particles-contact', 30);
+        
+        const nav = document.getElementById('main-nav');
         const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('.page');
+        
+        // Schimbă navbar la scroll
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            
+            // Actualizează navigația
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Navigare smooth
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -459,12 +911,41 @@
                 const targetSection = document.querySelector(targetId);
                 
                 if (targetSection) {
+                    history.pushState(null, null, targetId);
                     window.scrollTo({
                         top: targetSection.offsetTop,
                         behavior: 'smooth'
                     });
                 }
             });
+        });
+
+        // Gestionează butonul "Contact Me"
+        document.querySelector('.cta-button[href="#contact"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetSection = document.querySelector('#contact');
+            
+            if (targetSection) {
+                history.pushState(null, null, '#contact');
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        // Gestionează schimbarea hash-ului
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetSection = document.querySelector(hash);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
         });
     });
 </script>
