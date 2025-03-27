@@ -105,6 +105,7 @@
             text-align: center;
             max-width: 1100px;
             padding: 20px;
+            width: 100%;
         }
 
         h1, h2, h3 {
@@ -127,30 +128,37 @@
         /* Slideshow proiecte - MODIFICAT */
         .slideshow-container {
             position: relative;
-            max-width: 1000px;
             width: 100%;
             margin: 50px auto;
             overflow: hidden;
-            border-radius: 10px;
         }
 
         .slideshow {
             display: flex;
             transition: transform 0.5s ease;
+            width: 100%;
         }
 
         .slide {
             min-width: 100%;
             display: flex;
             flex-direction: column;
+            padding: 0 20px; /* Adăugat padding lateral */
+            box-sizing: border-box;
+        }
+
+        .slide-image-container {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 10px 10px 0 0;
         }
 
         .slide img {
             width: 100%;
-            height: 550px; /* Imagine mai mare */
-            object-fit: cover;
+            height: 550px;
+            object-fit: contain; /* Schimbat din cover în contain */
             display: block;
-            border-radius: 10px 10px 0 0;
+            background: #000; /* Fundal negru pentru spațiile goale */
         }
 
         .slide-content {
@@ -158,6 +166,7 @@
             padding: 20px;
             border-radius: 0 0 10px 10px;
             text-align: left;
+            width: 100%;
         }
 
         .slide-content h3 {
@@ -403,8 +412,13 @@
                 padding: 8px 12px;
             }
             
+            .slide {
+                padding: 0 10px;
+            }
+            
             .slide img {
                 height: 300px;
+                object-fit: contain;
             }
             
             .slide-content {
@@ -459,7 +473,9 @@
             <div class="slideshow" id="slideshow">
                 <!-- Slide 1 -->
                 <div class="slide">
-                    <img src="https://i.imgur.com/WprXNXA.png" alt="Proiect 1">
+                    <div class="slide-image-container">
+                        <img src="https://i.imgur.com/WprXNXA.png" alt="Proiect 1">
+                    </div>
                     <div class="slide-content">
                         <h3>Proiect 1</h3>
                         <p>Aplicație web dinamică în PHP și JS cu funcționalități complexe de gestionare a datelor și interfață interactivă.</p>
@@ -468,7 +484,9 @@
                 
                 <!-- Slide 2 -->
                 <div class="slide">
-                    <img src="https://source.unsplash.com/random/1000x550/?python,data" alt="Proiect 2">
+                    <div class="slide-image-container">
+                        <img src="https://source.unsplash.com/random/1200x600/?python,data" alt="Proiect 2">
+                    </div>
                     <div class="slide-content">
                         <h3>Proiect 2</h3>
                         <p>Automatizare proces în Python pentru analize de date și generare rapoarte cu vizualizări interactive.</p>
@@ -477,7 +495,9 @@
                 
                 <!-- Slide 3 -->
                 <div class="slide">
-                    <img src="https://source.unsplash.com/random/1000x550/?cpp,code" alt="Proiect 3">
+                    <div class="slide-image-container">
+                        <img src="https://source.unsplash.com/random/1200x600/?cpp,code" alt="Proiect 3">
+                    </div>
                     <div class="slide-content">
                         <h3>Proiect 3</h3>
                         <p>Web app interactiv folosind C++ și JavaScript pentru procesare rapidă a datelor pe partea de server.</p>
@@ -486,7 +506,9 @@
                 
                 <!-- Slide 4 -->
                 <div class="slide">
-                    <img src="https://source.unsplash.com/random/1000x550/?database,backend" alt="Proiect 4">
+                    <div class="slide-image-container">
+                        <img src="https://source.unsplash.com/random/1200x600/?database,backend" alt="Proiect 4">
+                    </div>
                     <div class="slide-content">
                         <h3>Proiect 4</h3>
                         <p>Sistem de gestionare a bazelor de date cu interfață administrativă și rapoarte personalizate.</p>
