@@ -150,43 +150,41 @@
         .project-numbers-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 25px;
-            padding-top: 15px;
+            margin-bottom: 20px;
+            padding-top: 10px;
         }
 
         .project-numbers {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             position: relative;
             z-index: 6;
         }
 
         .project-number {
-            width: 50px;
-            height: 50px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             color: var(--text-color);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             border: 2px solid rgba(255, 255, 255, 0.3);
             position: relative;
-            overflow: visible;
-            margin: 0 5px;
         }
 
         .project-number.active {
             background: var(--accent-color);
             color: var(--bg-dark);
             border-color: var(--accent-color);
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.8);
+            transform: scale(1.1);
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
             z-index: 2;
         }
 
@@ -194,21 +192,21 @@
         .image-dots-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .image-dots {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            padding: 8px 15px;
+            gap: 10px;
+            padding: 6px 12px;
             background: rgba(0, 0, 0, 0.4);
             border-radius: 20px;
         }
 
         .image-dot {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
@@ -217,8 +215,8 @@
 
         .image-dot.active {
             background: var(--accent-color);
-            transform: scale(1.3);
-            box-shadow: 0 0 8px rgba(0, 229, 255, 0.7);
+            transform: scale(1.2);
+            box-shadow: 0 0 6px rgba(0, 229, 255, 0.6);
         }
 
         /* Container pentru imaginile proiectului */
@@ -227,8 +225,8 @@
             width: 100%;
             margin-bottom: 20px;
             background: var(--bg-dark);
-            border-radius: 10px;
-            padding: 5px;
+            border-radius: 8px;
+            padding: 8px;
         }
 
         .project-images {
@@ -236,7 +234,7 @@
             overflow: hidden;
             width: 100%;
             border-radius: 5px;
-            height: 500px;
+            height: 480px;
         }
 
         .project-image {
@@ -246,14 +244,15 @@
             justify-content: center;
             align-items: center;
             background: var(--bg-dark);
+            padding: 8px;
         }
 
         .project-image img {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: calc(100% - 16px);
+            max-height: calc(100% - 16px);
             object-fit: contain;
             display: block;
-            border-radius: 5px;
+            border-radius: 4px;
         }
 
         /* Săgeți de navigare */
@@ -261,8 +260,8 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             background: rgba(0, 0, 0, 0.6);
             border-radius: 50%;
             display: flex;
@@ -278,31 +277,31 @@
         }
 
         .project-arrow-left {
-            left: 20px;
+            left: 15px;
         }
 
         .project-arrow-right {
-            right: 20px;
+            right: 15px;
         }
 
         .project-arrow i {
             color: white;
-            font-size: 22px;
+            font-size: 20px;
         }
 
         .slide-content {
             background: rgba(37, 37, 37, 0.9);
-            padding: 20px;
-            border-radius: 10px;
+            padding: 18px;
+            border-radius: 8px;
             text-align: left;
             width: 100%;
-            margin-top: 20px;
+            margin-top: 18px;
         }
 
         .slide-content h3 {
             color: var(--accent-color);
-            margin-bottom: 10px;
-            font-size: 1.5rem;
+            margin-bottom: 8px;
+            font-size: 1.4rem;
         }
 
         .slide-content p {
@@ -314,10 +313,10 @@
 
         /* Butoane */
         .cta-button {
-            padding: 15px 40px;
-            font-size: 1.2rem;
+            padding: 14px 36px;
+            font-size: 1.1rem;
             background-color: var(--primary-color);
-            border-radius: 30px;
+            border-radius: 28px;
             color: var(--text-color);
             border: 2px solid var(--primary-color);
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -326,7 +325,7 @@
             letter-spacing: 1px;
             display: inline-block;
             cursor: pointer;
-            margin: 10px;
+            margin: 8px;
             text-decoration: none;
             position: relative;
             z-index: 4;
@@ -348,7 +347,7 @@
             background-color: transparent;
             color: var(--primary-color);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
         }
 
         .cta-button:hover::before {
@@ -360,10 +359,10 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 50px;
+            gap: 16px;
+            margin-top: 45px;
             max-width: 1200px;
-            padding: 20px;
+            padding: 18px;
             position: relative;
             z-index: 4;
         }
@@ -375,7 +374,7 @@
             left: 0;
             width: 100%;
             background-color: rgba(0, 0, 0, 0.7);
-            padding: 15px 0;
+            padding: 14px 0;
             z-index: 100;
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
@@ -393,15 +392,15 @@
         }
 
         nav ul li {
-            margin: 0 30px;
+            margin: 0 25px;
         }
 
         nav ul li a {
             color: var(--text-color);
-            font-size: 1.2rem;
-            padding: 10px 15px;
+            font-size: 1.1rem;
+            padding: 9px 14px;
             display: inline-block;
-            border-radius: 25px;
+            border-radius: 24px;
             text-transform: uppercase;
             font-weight: bold;
             letter-spacing: 1px;
@@ -440,7 +439,7 @@
         nav ul li a:hover,
         nav ul li a.active {
             color: var(--accent-color);
-            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
         }
 
         nav ul li a:hover::before,
@@ -457,48 +456,48 @@
         footer {
             background-color: var(--bg-dark);
             color: var(--text-color);
-            padding: 40px 20px;
+            padding: 36px 20px;
             text-align: center;
             position: relative;
             z-index: 4;
         }
 
         footer p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin-bottom: 0;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-            p { font-size: 1.2rem; }
+            h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.9rem; }
+            p { font-size: 1.1rem; }
             
             nav ul li {
-                margin: 0 10px;
+                margin: 0 8px;
             }
             
             nav ul li a {
-                font-size: 1rem;
-                padding: 8px 12px;
+                font-size: 0.95rem;
+                padding: 7px 10px;
             }
             
             .project-number {
-                width: 42px;
-                height: 42px;
+                width: 38px;
+                height: 38px;
                 font-size: 1.1rem;
             }
             
             .project-images {
-                height: 350px;
+                height: 340px;
             }
             
             .slide-content {
-                padding: 15px;
+                padding: 14px;
             }
             
             .slide-content h3 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
             
             .slide-content p {
@@ -506,18 +505,20 @@
             }
             
             .project-arrow {
-                width: 36px;
-                height: 36px;
+                width: 34px;
+                height: 34px;
             }
             
             .project-arrow i {
-                font-size: 18px;
+                font-size: 16px;
             }
             
             .cta-button {
                 width: 100%;
-                max-width: 250px;
-                margin: 10px 0;
+                max-width: 240px;
+                margin: 8px 0;
+                padding: 12px 24px;
+                font-size: 1rem;
             }
         }
     </style>
