@@ -103,7 +103,7 @@
             position: relative;
             z-index: 4;
             text-align: center;
-            max-width: 800px;
+            max-width: 1000px;
             padding: 20px;
         }
 
@@ -124,10 +124,10 @@
             z-index: 4;
         }
 
-        /* Slideshow proiecte */
+        /* Slideshow proiecte - MODIFICAT */
         .slideshow-container {
             position: relative;
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
             margin: 50px auto;
             overflow: hidden;
@@ -147,31 +147,35 @@
 
         .slide img {
             width: 100%;
-            height: 450px;
+            height: 500px; /* Mărită înălțimea imaginii */
             object-fit: cover;
             display: block;
         }
 
         .slide-content {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 20px; /* Mai sus de marginea de jos */
+            left: 20px;
+            right: 20px;
             background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
+            padding: 15px; /* Padding redus */
             backdrop-filter: blur(5px);
+            border-radius: 8px; /* Colțuri rotunjite */
+            max-width: 80%; /* Lățime redusă */
+            margin: 0 auto; /* Centrat */
         }
 
         .slide-content h3 {
             color: var(--accent-color);
-            margin-bottom: 10px;
-            font-size: 1.8rem;
+            margin-bottom: 8px; /* Spațiu redus */
+            font-size: 1.5rem; /* Text mai mic */
         }
 
         .slide-content p {
-            font-size: 1.1rem;
+            font-size: 1rem; /* Text mai mic */
             text-align: left;
             margin-bottom: 0;
+            line-height: 1.4; /* Spațiere mai mică între rânduri */
         }
 
         /* Butoane navigare slideshow */
@@ -408,12 +412,18 @@
                 height: 350px;
             }
             
+            .slide-content {
+                max-width: 90%;
+                bottom: 10px;
+                padding: 10px;
+            }
+            
             .slide-content h3 {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
             
             .slide-content p {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .cta-button {
@@ -456,7 +466,7 @@
             <div class="slideshow" id="slideshow">
                 <!-- Slide 1 -->
                 <div class="slide">
-                    <img src="https://source.unsplash.com/random/800x450/?web,app" alt="Proiect 1">
+                    <img src="https://source.unsplash.com/random/900x500/?web,app" alt="Proiect 1">
                     <div class="slide-content">
                         <h3>Proiect 1</h3>
                         <p>Aplicație web dinamică în PHP și JS cu funcționalități complexe de gestionare a datelor și interfață interactivă.</p>
@@ -465,7 +475,7 @@
                 
                 <!-- Slide 2 -->
                 <div class="slide">
-                    <img src="https://source.unsplash.com/random/800x450/?python,data" alt="Proiect 2">
+                    <img src="https://source.unsplash.com/random/900x500/?python,data" alt="Proiect 2">
                     <div class="slide-content">
                         <h3>Proiect 2</h3>
                         <p>Automatizare proces în Python pentru analize de date și generare rapoarte cu vizualizări interactive.</p>
@@ -474,7 +484,7 @@
                 
                 <!-- Slide 3 -->
                 <div class="slide">
-                    <img src="https://source.unsplash.com/random/800x450/?cpp,code" alt="Proiect 3">
+                    <img src="https://source.unsplash.com/random/900x500/?cpp,code" alt="Proiect 3">
                     <div class="slide-content">
                         <h3>Proiect 3</h3>
                         <p>Web app interactiv folosind C++ și JavaScript pentru procesare rapidă a datelor pe partea de server.</p>
@@ -483,7 +493,7 @@
                 
                 <!-- Slide 4 -->
                 <div class="slide">
-                    <img src="https://source.unsplash.com/random/800x450/?database,backend" alt="Proiect 4">
+                    <img src="https://source.unsplash.com/random/900x500/?database,backend" alt="Proiect 4">
                     <div class="slide-content">
                         <h3>Proiect 4</h3>
                         <p>Sistem de gestionare a bazelor de date cu interfață administrativă și rapoarte personalizate.</p>
