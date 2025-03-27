@@ -539,12 +539,52 @@
                 const targetSection = document.querySelector(targetId);
                 
                 if (targetSection) {
+                    // Actualizează URL-ul în bara de adrese
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    } else {
+                        window.location.hash = targetId;
+                    }
+                    
                     window.scrollTo({
                         top: targetSection.offsetTop,
                         behavior: 'smooth'
                     });
                 }
             });
+        });
+
+        // Gestionează butonul "Contact Me" din secțiunea Home
+        document.querySelector('.cta-button[href="#contact"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetSection = document.querySelector('#contact');
+            
+            if (targetSection) {
+                if (history.pushState) {
+                    history.pushState(null, null, '#contact');
+                } else {
+                    window.location.hash = '#contact';
+                }
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        // Gestionează schimbarea hash-ului manual în URL
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetSection = document.querySelector(hash);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
         });
     });
 </script>
