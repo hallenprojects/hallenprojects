@@ -29,6 +29,7 @@
             --text-color: #ffffff;
             --dark-overlay: rgba(0, 0, 0, 0.3);
             --bg-dark: #111;
+            --image-border: 1px solid rgba(0, 0, 0, 0.7); /* Border uniform */
         }
 
         /* Stiluri pentru secțiuni */
@@ -128,7 +129,7 @@
         .slideshow-container {
             position: relative;
             width: 100%;
-            max-width: 900px;
+            max-width: 1100px; /* Mărit la 1100px */
             margin: 40px auto;
             overflow: hidden;
         }
@@ -188,7 +189,7 @@
             z-index: 2;
         }
 
-        /* Buline pentru navigarea între imagini - smaller dots */
+        /* Buline pentru navigarea între imagini */
         .image-dots-container {
             display: flex;
             justify-content: center;
@@ -223,15 +224,15 @@
             box-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
         }
 
-        /* Container pentru imaginile proiectului - uniform 1px border */
+        /* Container pentru imaginile proiectului - borduri uniforme */
         .project-images-container {
             position: relative;
             width: 100%;
             margin-bottom: 15px;
             background: var(--bg-dark);
             border-radius: 1px;
+            border: var(--image-border); /* Bordură uniformă */
             padding: 1px;
-            border: 1px solid rgba(0, 0, 0, 0.5);
         }
 
         .project-images {
@@ -239,7 +240,8 @@
             overflow: hidden;
             width: 100%;
             border-radius: 1px;
-            height: 900px;
+            height: 1100px; /* Mărit la 1100px */
+            border: var(--image-border); /* Bordură uniformă */
         }
 
         .project-image {
@@ -249,16 +251,18 @@
             justify-content: center;
             align-items: center;
             background: var(--bg-dark);
+            border: var(--image-border); /* Bordură uniformă */
         }
 
         .project-image img {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: calc(100% - 2px); /* Ajustat pentru bordură */
+            max-height: calc(100% - 2px); /* Ajustat pentru bordură */
             width: auto;
             height: auto;
             object-fit: contain;
             display: block;
             border-radius: 1px;
+            border: var(--image-border); /* Bordură uniformă */
         }
 
         /* Săgeți de navigare */
