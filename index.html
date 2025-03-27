@@ -28,7 +28,6 @@
             --accent-color: #00e5ff;
             --text-color: #ffffff;
             --dark-overlay: rgba(0, 0, 0, 0.3);
-            --bg-dark: #111;
             --image-border: 1px solid rgba(0, 0, 0, 0.7); /* Border uniform */
         }
 
@@ -129,7 +128,7 @@
         .slideshow-container {
             position: relative;
             width: 100%;
-            max-width: 1100px; /* Mărit la 1100px */
+            max-width: 1100px;
             margin: 40px auto;
             overflow: hidden;
         }
@@ -182,7 +181,7 @@
 
         .project-number.active {
             background: var(--accent-color);
-            color: var(--bg-dark);
+            color: #111; /* Culoare text pentru butoane active */
             border-color: var(--accent-color);
             transform: scale(1.1);
             box-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
@@ -224,15 +223,15 @@
             box-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
         }
 
-        /* Container pentru imaginile proiectului - borduri uniforme */
+        /* Container pentru imaginile proiectului - fără fundal */
         .project-images-container {
             position: relative;
             width: 100%;
             margin-bottom: 15px;
-            background: var(--bg-dark);
+            background: transparent; /* Eliminat fundalul */
             border-radius: 1px;
-            border: var(--image-border); /* Bordură uniformă */
-            padding: 1px;
+            border: none; /* Eliminat borderul */
+            padding: 0; /* Eliminat padding-ul */
         }
 
         .project-images {
@@ -240,8 +239,9 @@
             overflow: hidden;
             width: 100%;
             border-radius: 1px;
-            height: 1100px; /* Mărit la 1100px */
-            border: var(--image-border); /* Bordură uniformă */
+            height: 1100px;
+            background: transparent; /* Eliminat fundalul */
+            border: none; /* Eliminat borderul */
         }
 
         .project-image {
@@ -250,19 +250,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: var(--bg-dark);
-            border: var(--image-border); /* Bordură uniformă */
+            background: transparent; /* Eliminat fundalul */
+            border: none; /* Eliminat borderul */
         }
 
         .project-image img {
-            max-width: calc(100% - 2px); /* Ajustat pentru bordură */
-            max-height: calc(100% - 2px); /* Ajustat pentru bordură */
+            max-width: 100%;
+            max-height: 100%;
             width: auto;
             height: auto;
             object-fit: contain;
             display: block;
             border-radius: 1px;
-            border: var(--image-border); /* Bordură uniformă */
+            border: var(--image-border); /* Păstrăm doar borderul imaginii */
         }
 
         /* Săgeți de navigare */
@@ -464,7 +464,7 @@
 
         /* Footer */
         footer {
-            background-color: var(--bg-dark);
+            background-color: #111;
             color: var(--text-color);
             padding: 30px 20px;
             text-align: center;
@@ -597,10 +597,10 @@
                                 <img src="https://i.imgur.com/WprXNXA.png" alt="Proiect 1 - Imagine 1">
                             </div>
                             <div class="project-image">
-                                <img src="https://i.imgur.com/7o8fliM.png" alt="Proiect 1 - Imagine 2">
+                                <img src="https://i.imgur.com/abc123.jpg" alt="Proiect 1 - Imagine 2">
                             </div>
                             <div class="project-image">
-                                <img src="https://i.imgur.com/4nO5hNg.png" alt="Proiect 1 - Imagine 3">
+                                <img src="https://i.imgur.com/def456.jpg" alt="Proiect 1 - Imagine 3">
                             </div>
                         </div>
                         <div class="project-arrow project-arrow-left" onclick="prevImage('project1')">
