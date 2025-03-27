@@ -28,7 +28,7 @@
             --accent-color: #00e5ff;
             --text-color: #ffffff;
             --dark-overlay: rgba(0, 0, 0, 0.3);
-            --image-border: 1px solid rgba(0, 0, 0, 0.7); /* Border uniform */
+            --image-border: 1px solid rgba(0, 0, 0, 0.7);
         }
 
         /* Stiluri pentru secțiuni */
@@ -129,7 +129,7 @@
             position: relative;
             width: 100%;
             max-width: 1100px;
-            margin: 40px auto;
+            margin: 20px auto; /* Redus margin-ul */
             overflow: hidden;
         }
 
@@ -150,7 +150,7 @@
         .project-numbers-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px; /* Redus spațiul */
             padding-top: 5px;
         }
 
@@ -181,7 +181,7 @@
 
         .project-number.active {
             background: var(--accent-color);
-            color: #111; /* Culoare text pentru butoane active */
+            color: #111;
             border-color: var(--accent-color);
             transform: scale(1.1);
             box-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
@@ -192,7 +192,7 @@
         .image-dots-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 1px;
+            margin-bottom: 5px; /* Redus spațiul */
             padding: 1px 0;
         }
 
@@ -223,15 +223,14 @@
             box-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
         }
 
-        /* Container pentru imaginile proiectului - fără fundal */
+        /* Container pentru imaginile proiectului */
         .project-images-container {
             position: relative;
             width: 100%;
-            margin-bottom: 15px;
-            background: transparent; /* Eliminat fundalul */
+            margin-bottom: 10px; /* Redus spațiul */
+            background: transparent;
             border-radius: 1px;
-            border: none; /* Eliminat borderul */
-            padding: 0; /* Eliminat padding-ul */
+            padding: 0;
         }
 
         .project-images {
@@ -240,8 +239,7 @@
             width: 100%;
             border-radius: 1px;
             height: 1100px;
-            background: transparent; /* Eliminat fundalul */
-            border: none; /* Eliminat borderul */
+            background: transparent;
         }
 
         .project-image {
@@ -250,8 +248,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: transparent; /* Eliminat fundalul */
-            border: none; /* Eliminat borderul */
+            background: transparent;
         }
 
         .project-image img {
@@ -262,7 +259,7 @@
             object-fit: contain;
             display: block;
             border-radius: 1px;
-            border: var(--image-border); /* Păstrăm doar borderul imaginii */
+            border: var(--image-border);
         }
 
         /* Săgeți de navigare */
@@ -305,7 +302,7 @@
             border-radius: 6px;
             text-align: left;
             width: 100%;
-            margin-top: 15px;
+            margin-top: 10px; /* Redus spațiul */
         }
 
         .slide-content h3 {
