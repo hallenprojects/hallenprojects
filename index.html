@@ -152,11 +152,13 @@
             justify-content: center;
             gap: 15px;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 6;
         }
 
         .project-number {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             color: var(--text-color);
@@ -168,6 +170,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border: 2px solid rgba(255, 255, 255, 0.3);
+            margin: 5px;
+            position: relative;
+            overflow: visible;
         }
 
         .project-number.active {
@@ -176,7 +181,7 @@
             border-color: var(--accent-color);
             transform: scale(1.1);
             box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
-            z-index: 1;
+            z-index: 2;
         }
 
         /* Container pentru imaginile proiectului */
@@ -184,8 +189,9 @@
             position: relative;
             width: 100%;
             margin-bottom: 20px;
-            overflow: hidden;
+            background: var(--bg-dark);
             border-radius: 10px;
+            padding: 10px;
         }
 
         /* Buline pentru navigarea între imagini */
@@ -193,29 +199,33 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 15px;
+            margin: 15px 0;
+            padding-top: 5px;
+            position: relative;
+            z-index: 6;
         }
 
         .image-dot {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
+            margin: 2px;
         }
 
         .image-dot.active {
             background: var(--accent-color);
             transform: scale(1.3);
+            box-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
         }
 
         .project-images {
             display: flex;
             overflow: hidden;
             width: 100%;
-            background: var(--bg-dark);
-            border-radius: 0;
+            border-radius: 5px;
         }
 
         .project-image {
@@ -224,15 +234,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            background: var(--bg-dark);
+            padding: 10px;
         }
 
         .project-image img {
             max-width: 100%;
             max-height: 450px;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
-            border-radius: 0;
-            width: 100%;
+            border-radius: 5px;
+            width: auto;
+            height: auto;
         }
 
         /* Săgeți de navigare */
@@ -257,11 +270,11 @@
         }
 
         .project-arrow-left {
-            left: 10px;
+            left: 20px;
         }
 
         .project-arrow-right {
-            right: 10px;
+            right: 20px;
         }
 
         .project-arrow i {
@@ -463,8 +476,8 @@
             }
             
             .project-number {
-                width: 35px;
-                height: 35px;
+                width: 38px;
+                height: 38px;
                 font-size: 1rem;
             }
             
