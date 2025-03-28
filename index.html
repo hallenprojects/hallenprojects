@@ -250,6 +250,7 @@
             justify-content: center;
             align-items: center;
             background: transparent;
+            flex-shrink: 0;
         }
 
         .project-image img {
@@ -806,6 +807,11 @@
 
     function nextSlide() {
         currentSlide = (currentSlide + 1) % slideCount;
+        updateSlideshow();
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
         updateSlideshow();
     }
 
