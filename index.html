@@ -39,9 +39,18 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 80px 20px;
+            padding: 20px;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Special styling for projects section */
+        #projects.page {
+            justify-content: flex-start;
+            padding-top: 80px;
+            padding-bottom: 20px;
+            height: 100vh;
+            overflow-y: auto;
         }
 
         /* Animatie background */
@@ -232,7 +241,8 @@
             background: transparent;
             border-radius: 0;
             padding: 0;
-            height: 600px;
+            height: calc(100vh - 300px);
+            min-height: 500px;
             overflow: hidden;
         }
 
@@ -504,8 +514,16 @@
                 font-size: 1rem;
             }
             
+            #projects.page {
+                padding-top: 60px;
+                height: auto;
+                min-height: 100vh;
+            }
+            
             .project-images-container {
-                height: 500px;
+                height: auto;
+                min-height: 300px;
+                max-height: 50vh;
             }
             
             .slide-content {
