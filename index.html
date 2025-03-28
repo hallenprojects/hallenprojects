@@ -251,7 +251,6 @@
             align-items: center;
             background: transparent;
             flex-shrink: 0;
-            position: relative;
         }
 
         .project-image img {
@@ -263,7 +262,6 @@
             display: block;
             border-radius: 0;
             border: none;
-            position: absolute;
         }
 
         /* Săgeți de navigare */
@@ -593,13 +591,13 @@
                     
                     <div class="project-images-container">
                         <div class="project-images" id="project1-images">
-                            <div class="project-image" style="transform: translateX(0%)">
+                            <div class="project-image">
                                 <img src="https://i.imgur.com/WprXNXA.png" alt="Proiect 1 - Imagine 1">
                             </div>
-                            <div class="project-image" style="transform: translateX(200%)">
+                            <div class="project-image">
                                 <img src="https://i.imgur.com/7o8fliM.png" alt="Proiect 1 - Imagine 2">
                             </div>
-                            <div class="project-image" style="transform: translateX(200%)">
+                            <div class="project-image">
                                 <img src="https://i.imgur.com/4nO5hNg.png" alt="Proiect 1 - Imagine 3">
                             </div>
                         </div>
@@ -629,13 +627,13 @@
                     
                     <div class="project-images-container">
                         <div class="project-images" id="project2-images">
-                            <div class="project-image" style="transform: translateX(0%)">
+                            <div class="project-image">
                                 <img src="https://i.imgur.com/5QzYQt0.jpg" alt="Proiect 2 - Imagine 1">
                             </div>
-                            <div class="project-image" style="transform: translateX(100%)">
+                            <div class="project-image">
                                 <img src="https://i.imgur.com/8L9qQ2a.jpg" alt="Proiect 2 - Imagine 2">
                             </div>
-                            <div class="project-image" style="transform: translateX(200%)">
+                            <div class="project-image">
                                 <img src="https://i.imgur.com/9zR3bVX.jpg" alt="Proiect 2 - Imagine 3">
                             </div>
                         </div>
@@ -665,13 +663,13 @@
                     
                     <div class="project-images-container">
                         <div class="project-images" id="project3-images">
-                            <div class="project-image" style="transform: translateX(0%)">
+                            <div class="project-image">
                                 <img src="https://i.imgur.com/7VvRg9P.jpg" alt="Proiect 3 - Imagine 1">
                             </div>
-                            <div class="project-image" style="transform: translateX(100%)">
+                            <div class="project-image">
                                 <img src="https://i.imgur.com/1a2b3c4.jpg" alt="Proiect 3 - Imagine 2">
                             </div>
-                            <div class="project-image" style="transform: translateX(200%)">
+                            <div class="project-image">
                                 <img src="https://i.imgur.com/d5e6f7g.jpg" alt="Proiect 3 - Imagine 3">
                             </div>
                         </div>
@@ -701,13 +699,13 @@
                     
                     <div class="project-images-container">
                         <div class="project-images" id="project4-images">
-                            <div class="project-image" style="transform: translateX(0%)">
+                            <div class="project-image">
                                 <img src="https://i.imgur.com/h8i9j0k.jpg" alt="Proiect 4 - Imagine 1">
                             </div>
-                            <div class="project-image" style="transform: translateX(100%)">
+                            <div class="project-image">
                                 <img src="https://i.imgur.com/l1m2n3o.jpg" alt="Proiect 4 - Imagine 2">
                             </div>
-                            <div class="project-image" style="transform: translateX(200%)">
+                            <div class="project-image">
                                 <img src="https://i.imgur.com/p4q5r6s.jpg" alt="Proiect 4 - Imagine 3">
                             </div>
                         </div>
@@ -763,15 +761,11 @@
     // Funcții pentru navigarea între imagini
     function updateProjectImages(projectId) {
         const imagesContainer = document.getElementById(`${projectId}-images`);
-        const images = imagesContainer.querySelectorAll('.project-image');
         const dots = document.querySelectorAll(`#${projectId}-dots .image-dot`);
         const state = projectStates[projectId];
         
-        // Actualizează poziția imaginilor
-        images.forEach((image, index) => {
-            const offset = (index - state.currentImage) * 100;
-            image.style.transform = `translateX(${offset}%)`;
-        });
+        // Actualizează poziția containerului de imagini
+        imagesContainer.style.transform = `translateX(-${state.currentImage * 100}%)`;
         
         // Actualizează punctele de navigare
         dots.forEach((dot, index) => {
