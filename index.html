@@ -764,8 +764,13 @@
         const dots = document.querySelectorAll(`#${projectId}-dots .image-dot`);
         const state = projectStates[projectId];
         
-        imagesContainer.style.transform = `translateX(-${state.currentImage * 100}%)`;
+        // Actualizează poziția imaginilor
+        const images = imagesContainer.querySelectorAll('.project-image');
+        images.forEach((image, index) => {
+            image.style.transform = `translateX(${(index - state.currentImage) * 100}%)`;
+        });
         
+        // Actualizează punctele de navigare
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === state.currentImage);
         });
