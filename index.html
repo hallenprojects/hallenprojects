@@ -224,7 +224,7 @@
             box-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
         }
 
-        /* Container pentru imaginile proiectului */
+        /* Container pentru imaginile proiectului - MODIFICAT */
         .project-images-container {
             position: relative;
             width: 100%;
@@ -232,25 +232,32 @@
             background: transparent;
             border-radius: 0;
             padding: 0;
+            height: 600px;
+            overflow: hidden;
         }
 
         .project-images {
             display: flex;
-            overflow: hidden;
             width: 100%;
-            border-radius: 0;
-            height: 600px;
-            background: transparent;
+            height: 100%;
+            position: relative;
         }
 
         .project-image {
-            min-width: 100%;
-            transition: transform 0.5s ease;
+            position: absolute;
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: transparent;
-            flex-shrink: 0;
+            transition: all 0.5s ease;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .project-image.active {
+            opacity: 1;
+            z-index: 2;
         }
 
         .project-image img {
@@ -497,7 +504,7 @@
                 font-size: 1rem;
             }
             
-            .project-images {
+            .project-images-container {
                 height: 500px;
             }
             
@@ -583,15 +590,15 @@
                     <!-- Bulinele pentru imagini -->
                     <div class="image-dots-container">
                         <div class="image-dots" id="project1-dots">
-                            <div class="image-dot active" onclick="goToImage('project1', 0)"></div>
-                            <div class="image-dot" onclick="goToImage('project1', 1)"></div>
-                            <div class="image-dot" onclick="goToImage('project1', 2)"></div>
+                            <div class="image-dot active" onclick="showImage('project1', 0)"></div>
+                            <div class="image-dot" onclick="showImage('project1', 1)"></div>
+                            <div class="image-dot" onclick="showImage('project1', 2)"></div>
                         </div>
                     </div>
                     
                     <div class="project-images-container">
                         <div class="project-images" id="project1-images">
-                            <div class="project-image">
+                            <div class="project-image active">
                                 <img src="https://i.imgur.com/WprXNXA.png" alt="Proiect 1 - Imagine 1">
                             </div>
                             <div class="project-image">
@@ -619,15 +626,15 @@
                     <!-- Bulinele pentru imagini -->
                     <div class="image-dots-container">
                         <div class="image-dots" id="project2-dots">
-                            <div class="image-dot active" onclick="goToImage('project2', 0)"></div>
-                            <div class="image-dot" onclick="goToImage('project2', 1)"></div>
-                            <div class="image-dot" onclick="goToImage('project2', 2)"></div>
+                            <div class="image-dot active" onclick="showImage('project2', 0)"></div>
+                            <div class="image-dot" onclick="showImage('project2', 1)"></div>
+                            <div class="image-dot" onclick="showImage('project2', 2)"></div>
                         </div>
                     </div>
                     
                     <div class="project-images-container">
                         <div class="project-images" id="project2-images">
-                            <div class="project-image">
+                            <div class="project-image active">
                                 <img src="https://i.imgur.com/5QzYQt0.jpg" alt="Proiect 2 - Imagine 1">
                             </div>
                             <div class="project-image">
@@ -655,15 +662,15 @@
                     <!-- Bulinele pentru imagini -->
                     <div class="image-dots-container">
                         <div class="image-dots" id="project3-dots">
-                            <div class="image-dot active" onclick="goToImage('project3', 0)"></div>
-                            <div class="image-dot" onclick="goToImage('project3', 1)"></div>
-                            <div class="image-dot" onclick="goToImage('project3', 2)"></div>
+                            <div class="image-dot active" onclick="showImage('project3', 0)"></div>
+                            <div class="image-dot" onclick="showImage('project3', 1)"></div>
+                            <div class="image-dot" onclick="showImage('project3', 2)"></div>
                         </div>
                     </div>
                     
                     <div class="project-images-container">
                         <div class="project-images" id="project3-images">
-                            <div class="project-image">
+                            <div class="project-image active">
                                 <img src="https://i.imgur.com/7VvRg9P.jpg" alt="Proiect 3 - Imagine 1">
                             </div>
                             <div class="project-image">
@@ -691,15 +698,15 @@
                     <!-- Bulinele pentru imagini -->
                     <div class="image-dots-container">
                         <div class="image-dots" id="project4-dots">
-                            <div class="image-dot active" onclick="goToImage('project4', 0)"></div>
-                            <div class="image-dot" onclick="goToImage('project4', 1)"></div>
-                            <div class="image-dot" onclick="goToImage('project4', 2)"></div>
+                            <div class="image-dot active" onclick="showImage('project4', 0)"></div>
+                            <div class="image-dot" onclick="showImage('project4', 1)"></div>
+                            <div class="image-dot" onclick="showImage('project4', 2)"></div>
                         </div>
                     </div>
                     
                     <div class="project-images-container">
                         <div class="project-images" id="project4-images">
-                            <div class="project-image">
+                            <div class="project-image active">
                                 <img src="https://i.imgur.com/h8i9j0k.jpg" alt="Proiect 4 - Imagine 1">
                             </div>
                             <div class="project-image">
@@ -759,35 +766,42 @@
     const slideCount = 4;
 
     // Funcții pentru navigarea între imagini
-    function updateProjectImages(projectId) {
-        const imagesContainer = document.getElementById(`${projectId}-images`);
+    function showImage(projectId, index) {
+        const images = document.querySelectorAll(`#${projectId}-images .project-image`);
         const dots = document.querySelectorAll(`#${projectId}-dots .image-dot`);
-        const state = projectStates[projectId];
         
-        // Actualizează poziția containerului de imagini
-        imagesContainer.style.transform = `translateX(-${state.currentImage * 100}%)`;
+        // Actualizează starea
+        projectStates[projectId].currentImage = index;
         
-        // Actualizează punctele de navigare
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === state.currentImage);
+        // Actualizează imaginile
+        images.forEach((img, i) => {
+            if (i === index) {
+                img.classList.add('active');
+            } else {
+                img.classList.remove('active');
+            }
+        });
+        
+        // Actualizează punctele
+        dots.forEach((dot, i) => {
+            if (i === index) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
         });
     }
 
     function nextImage(projectId) {
         const state = projectStates[projectId];
-        state.currentImage = (state.currentImage + 1) % state.totalImages;
-        updateProjectImages(projectId);
+        const nextIndex = (state.currentImage + 1) % state.totalImages;
+        showImage(projectId, nextIndex);
     }
 
     function prevImage(projectId) {
         const state = projectStates[projectId];
-        state.currentImage = (state.currentImage - 1 + state.totalImages) % state.totalImages;
-        updateProjectImages(projectId);
-    }
-
-    function goToImage(projectId, index) {
-        projectStates[projectId].currentImage = index;
-        updateProjectImages(projectId);
+        const prevIndex = (state.currentImage - 1 + state.totalImages) % state.totalImages;
+        showImage(projectId, prevIndex);
     }
 
     // Funcții pentru navigarea între proiecte
@@ -848,11 +862,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        // Inițializează starea imaginilor pentru fiecare proiect
-        Object.keys(projectStates).forEach(projectId => {
-            updateProjectImages(projectId);
-        });
-        
         // Inițializează slideshow-ul
         updateSlideshow();
         
